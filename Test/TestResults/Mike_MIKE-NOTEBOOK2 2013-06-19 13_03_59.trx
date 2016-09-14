@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TestRun id="3b1aa2fb-1c11-49d0-a621-f3e280655426" name="Mike@MIKE-NOTEBOOK2 2013-06-19 13:03:59" runUser="MIKE-NOTEBOOK2\Mike" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2006">
+  <TestRunConfiguration name="Default Run Configuration" id="d3b22174-25d1-4232-b330-f0779c09016a">
+    <Deployment userDeploymentRoot="D:\ALinq\Source\Trunk\Test\TestResults" useDefaultDeploymentRoot="false" runDeploymentRoot="D:\ALinq\Source\Trunk\Test\TestResults\Mike_MIKE-NOTEBOOK2 2013-06-19 13_03_59">
+      <DeploymentItem filename="D:\ALinq\Source\Trunk\Northwind\bin\Debug\NorthwindDatabase.dll" />
+      <DeploymentItem filename="D:\ALinq\Source\Trunk\Test\bin\Debug\Oracle.DataAccess.dll" />
+    </Deployment>
+    <Hosts skipUnhostableTests="false" />
+    <TestTypeSpecific />
+  </TestRunConfiguration>
+  <ResultSummary outcome="Error">
+    <Counters total="1" error="0" failed="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="1" disconnected="0" warning="0" passed="0" completed="0" inProgress="0" pending="0" />
+    <RunInfos>
+      <RunInfo computerName="MIKE-NOTEBOOK2" outcome="Error" timestamp="2013-06-19T13:04:04.3887491+08:00">
+        <Text>Test host process exited unexpectedly.</Text>
+      </RunInfo>
+      <RunInfo computerName="MIKE-NOTEBOOK2" outcome="Error" timestamp="2013-06-19T13:04:04.4127504+08:00">
+        <Text>Failed to queue test run 'Mike@MIKE-NOTEBOOK2 2013-06-19 13:03:59': Test host process exited unexpectedly.</Text>
+        <Exception>Microsoft.VisualStudio.TestTools.TestManagement.ExecutionException: Test host process exited unexpectedly.
+   at Microsoft.VisualStudio.TestTools.TestManagement.LocalControllerProxy.StartProcess(TestRun run)
+   at Microsoft.VisualStudio.TestTools.TestManagement.LocalControllerProxy.RestartProcess(TestRun run)
+   at Microsoft.VisualStudio.TestTools.TestManagement.LocalControllerProxy.PrepareProcess(TestRun run)
+   at Microsoft.VisualStudio.TestTools.TestManagement.LocalControllerProxy.InitializeController(TestRun run)
+   at Microsoft.VisualStudio.TestTools.TestManagement.ControllerProxy.QueueTestRunWorker(Object state)</Exception>
+      </RunInfo>
+    </RunInfos>
+  </ResultSummary>
+  <Times creation="2013-06-19T13:03:59.6444777+08:00" queuing="2013-06-19T13:03:59.6444777+08:00" start="2013-06-19T13:03:59.6444777+08:00" finish="2013-06-19T13:04:04.4127504+08:00" />
+  <TestDefinitions>
+    <UnitTest name="GroupBy_Min" storage="d:\alinq\source\trunk\test\bin\debug\test.dll" id="e166480e-5731-94f6-6b47-d1373309f64e">
+      <Css projectStructure="" iteration="" />
+      <Owners>
+        <Owner name="" />
+      </Owners>
+      <TestMethod codeBase="D:\ALinq\Source\Trunk\Test\bin\Debug\Test.dll" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="Test.FirebirdTest, Test" name="GroupBy_Min" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <TestEntries>
+    <TestEntry testId="e166480e-5731-94f6-6b47-d1373309f64e" executionId="3068f39d-5887-4a26-a6bc-d0d3b73affb6" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <Results>
+    <UnitTestResult executionId="3068f39d-5887-4a26-a6bc-d0d3b73affb6" testId="e166480e-5731-94f6-6b47-d1373309f64e" testName="GroupBy_Min" computerName="MIKE-NOTEBOOK2" duration="00:00:00" startTime="0001-01-01T08:00:00.0000000+08:00" endTime="0001-01-01T08:00:00.0000000+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="NotExecuted" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d">
+    </UnitTestResult>
+  </Results>
+</TestRun>

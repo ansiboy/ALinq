@@ -1,0 +1,16 @@
+D:\ALinq\Source\Trunk\ALinq.PostgreSQL\bin\Debug\ALinq.PostgreSQL.dll
+D:\ALinq\Source\Trunk\ALinq.PostgreSQL\bin\Debug\ALinq.PostgreSQL.pdb
+D:\ALinq\Source\Trunk\ALinq.PostgreSQL\obj\Debug\ALinq.PostgreSQL.csprojResolveAssemblyReference.cache
+D:\ALinq\Source\Trunk\ALinq.PostgreSQL\obj\Debug\ALinq.PostgreSQL.dll
+D:\ALinq\Source\Trunk\ALinq.PostgreSQL\obj\Debug\ALinq.PostgreSQL.pdb
+D:\Projects\ALinq\ALinq.PostgreSQL\bin\Debug\ALinq.PostgreSQL.dll
+D:\Projects\ALinq\ALinq.PostgreSQL\bin\Debug\ALinq.PostgreSQL.pdb
+D:\Projects\ALinq\ALinq.PostgreSQL\bin\Debug\ALinq.dll
+D:\Projects\ALinq\ALinq.PostgreSQL\bin\Debug\Npgsql.dll
+D:\Projects\ALinq\ALinq.PostgreSQL\bin\Debug\Mono.Security.dll
+D:\Projects\ALinq\ALinq.PostgreSQL\bin\Debug\ALinq.pdb
+D:\Projects\ALinq\ALinq.PostgreSQL\bin\Debug\ALinq.xml
+D:\Projects\ALinq\ALinq.PostgreSQL\bin\Debug\zh-CN\ALinq.resources.dll
+D:\Projects\ALinq\ALinq.PostgreSQL\obj\Debug\ALinq.PostgreSQL.csprojResolveAssemblyReference.cache
+D:\Projects\ALinq\ALinq.PostgreSQL\obj\Debug\ALinq.PostgreSQL.dll
+D:\Projects\ALinq\ALinq.PostgreSQL\obj\Debug\ALinq.PostgreSQL.pdb

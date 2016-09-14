@@ -1,0 +1,5 @@
+D:\ALinq\Source\Trunk\ALinq.PostgreSQL\bin\Free Edition Release\ALinq.PostgreSQL.dll
+D:\ALinq\Source\Trunk\ALinq.PostgreSQL\bin\Free Edition Release\ALinq.PostgreSQL.pdb
+D:\ALinq\Source\Trunk\ALinq.PostgreSQL\obj\Free Edition Release\ALinq.PostgreSQL.dll
+D:\ALinq\Source\Trunk\ALinq.PostgreSQL\obj\Free Edition Release\ALinq.PostgreSQL.pdb
+D:\ALinq\Source\Trunk\ALinq.PostgreSQL\obj\Free Edition Release\ALinq.PostgreSQL.csprojResolveAssemblyReference.cache

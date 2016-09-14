@@ -1,0 +1,298 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{B23654A0-1960-4F81-8447-63768C442C97}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Test</RootNamespace>
+    <AssemblyName>Test</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>key.snk</AssemblyOriginatorKeyFile>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>4.0</OldToolsVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <IsWebBootstrapper>true</IsWebBootstrapper>
+    <PublishUrl>http://localhost/Test/</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Web</InstallFrom>
+    <UpdateEnabled>true</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Free Edition Release|AnyCPU'">
+    <OutputPath>bin\Free Edition Release\</OutputPath>
+    <DefineConstants>TRACE;FREE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <CodeAnalysisLogFile>bin\Release\Test.dll.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSetDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\\Rule Sets</CodeAnalysisRuleSetDirectories>
+    <CodeAnalysisRuleDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
+    <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Free Edition Debug|AnyCPU'">
+    <OutputPath>bin\Free Edition Debug\</OutputPath>
+    <DefineConstants>TRACE;FREE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <CodeAnalysisLogFile>bin\Release\Test.dll.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSetDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\\Rule Sets</CodeAnalysisRuleSetDirectories>
+    <CodeAnalysisRuleDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ALinq.Access, Version=3.0.40.35, Culture=neutral, PublicKeyToken=2b23f34316d38f3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\LinqToAccessDB\bin\Debug\ALinq.Access.dll</HintPath>
+    </Reference>
+    <Reference Include="ALinq.DB2, Version=3.0.40.35, Culture=neutral, PublicKeyToken=2b23f34316d38f3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ALinq.DB2\bin\Debug\ALinq.DB2.dll</HintPath>
+    </Reference>
+    <Reference Include="ALinq.Firebird, Version=3.0.40.35, Culture=neutral, PublicKeyToken=2b23f34316d38f3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\LinqToFirebird\bin\Debug\ALinq.Firebird.dll</HintPath>
+    </Reference>
+    <Reference Include="ALinq.MySQL, Version=3.0.40.35, Culture=neutral, PublicKeyToken=2b23f34316d38f3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\LinqToMySQL\bin\Debug\ALinq.MySQL.dll</HintPath>
+    </Reference>
+    <Reference Include="ALinq.Oracle, Version=3.0.40.35, Culture=neutral, PublicKeyToken=2b23f34316d38f3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\LinqToOrcale\bin\Debug\ALinq.Oracle.dll</HintPath>
+    </Reference>
+    <Reference Include="ALinq.Oracle.Odp, Version=3.0.40.35, Culture=neutral, PublicKeyToken=2b23f34316d38f3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\OdpOracle\bin\Debug\ALinq.Oracle.Odp.dll</HintPath>
+    </Reference>
+    <Reference Include="ALinq.PostgreSQL, Version=3.0.40.35, Culture=neutral, PublicKeyToken=2b23f34316d38f3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ALinq.PostgreSQL\bin\Debug\ALinq.PostgreSQL.dll</HintPath>
+    </Reference>
+    <Reference Include="ALinq.SQLite, Version=3.0.40.35, Culture=neutral, PublicKeyToken=2b23f34316d38f3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\LinqToSqlLite\bin\Debug\ALinq.SQLite.dll</HintPath>
+    </Reference>
+    <Reference Include="ALinq.Web, Version=3.0.40.35, Culture=neutral, PublicKeyToken=2b23f34316d38f3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ALinq.Web\bin\Debug\ALinq.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="FirebirdSql.Data.FirebirdClient, Version=3.0.2.0, Culture=neutral, PublicKeyToken=3750abcc3150b00c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Library.DataProvider\FirebirdSql.Data.FirebirdClient.dll</HintPath>
+    </Reference>
+    <Reference Include="IBM.Data.DB2, Version=9.0.0.2, Culture=neutral, PublicKeyToken=7c307b91aa13d208, processorArchitecture=AMD64" />
+    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Mono.Security">
+      <HintPath>..\..\..\..\DotNetProvider\Mono.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data">
+      <HintPath>..\..\..\Library.DataProvider\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Npgsql">
+      <HintPath>..\..\..\..\DotNetProvider\Npgsql.dll</HintPath>
+    </Reference>
+    <Reference Include="Oracle.DataAccess, Version=2.111.6.20, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=x86" />
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.OracleClient" />
+    <Reference Include="System.Data.Services" />
+    <Reference Include="System.Data.Services.Client" />
+    <Reference Include="System.Data.SQLite, Version=1.0.66.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Library.DataProvider\System.Data.SQLite.DLL</HintPath>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.XML" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AccessDataTypeProvider.cs" />
+    <Compile Include="AccessProviderTest.cs" />
+    <Compile Include="AccessTest.cs" />
+    <Compile Include="ALinq2.cs" />
+    <Compile Include="AttributeMappingSourceTest.cs" />
+    <Compile Include="CompiledQueryTest.cs" />
+    <Compile Include="DynamicMappingTest.cs" />
+    <Compile Include="SQLiteDataTypeProviderTest.cs" />
+    <Compile Include="DatabaseSqlBuilderTest.cs" />
+    <Compile Include="DataContextTest.cs" />
+    <Compile Include="DataType.cs" />
+    <Compile Include="DB2DataTypeProviderTest.cs" />
+    <Compile Include="DB2Test.cs" />
+    <Compile Include="DynamicData\DataModelProviderTest.cs" />
+    <Compile Include="FirebirdDataTypeTest.cs" />
+    <Compile Include="FirebirdProcedureTest.cs" />
+    <Compile Include="FirebirdTest.cs" />
+    <Compile Include="LicenseAttribute.cs" />
+    <Compile Include="LicenseTest.cs" />
+    <Compile Include="MySqlProcedureTest.cs" />
+    <Compile Include="MySqlTest.cs" />
+    <Compile Include="MySqlTypeProviderTest.cs" />
+    <Compile Include="NorOracleDataTypeProviderTest.cs" />
+    <Compile Include="NorOracleProcedureTest.cs" />
+    <Compile Include="NpgsqlDataTypeProviderTest.cs" />
+    <Compile Include="OdpOracleDataTypeProviderTest.cs" />
+    <Compile Include="OdpOracleTest.cs" />
+    <Compile Include="OleOracleTest.cs" />
+    <Compile Include="OracleDataTypeProviderTest.cs" />
+    <Compile Include="OracleProcedureTest.cs" />
+    <Compile Include="OracleTest.cs" />
+    <Compile Include="PgsqlTest.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="SQL2000Test.cs" />
+    <Compile Include="SQL2005Test.cs" />
+    <Compile Include="SqlFunctions.cs" />
+    <Compile Include="SQLiteDataTypeTest.cs" />
+    <Compile Include="SQLiteTest.cs" />
+    <Compile Include="SqlMethods.cs" />
+    <Compile Include="SqlTest.cs" />
+    <Compile Include="SRTest.cs" />
+    <Compile Include="Temp.cs" />
+    <Compile Include="Test.cs" />
+    <Compile Include="DataService.cs" />
+    <Compile Include="XmlMappingSourceTest.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <EmbeddedResource Include="Northwind.Pgsql.map" />
+    <None Include="key.snk" />
+    <EmbeddedResource Include="Northwind.Access.map">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <None Include="Northwind.Efz.map">
+      <SubType>Designer</SubType>
+    </None>
+    <EmbeddedResource Include="Northwind.Firebird.map" />
+    <EmbeddedResource Include="Northwind.MySql.map" />
+    <EmbeddedResource Include="Northwind.Oracle.map" />
+    <EmbeddedResource Include="Northwind.Oracle.Odp.map" />
+    <None Include="Northwind.SQL2000.map" />
+    <EmbeddedResource Include="Northwind.SQLite.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\1.bmp" />
+    <EmbeddedResource Include="Resources\2.bmp" />
+    <EmbeddedResource Include="Resources\3.bmp" />
+    <EmbeddedResource Include="Resources\4.bmp" />
+    <EmbeddedResource Include="Resources\5.bmp" />
+    <EmbeddedResource Include="Resources\6.bmp" />
+    <EmbeddedResource Include="Resources\7.bmp" />
+    <EmbeddedResource Include="Resources\8.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Northwind\Northwind.csproj">
+      <Project>{EB362F8A-2604-4FC2-BBF0-72BFA6905C83}</Project>
+      <Name>Northwind</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ALinq\ALinq.csproj">
+      <Project>{CACC7600-A3D0-4E7F-9C03-88F98C762DBD}</Project>
+      <Name>ALinq</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="FluentMapping\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

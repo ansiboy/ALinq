@@ -1,0 +1,15 @@
+D:\ALinq\Source\Trunk\LinqToAccessDB\bin\Debug\ALinq.Access.dll
+D:\ALinq\Source\Trunk\LinqToAccessDB\bin\Debug\ALinq.Access.pdb
+D:\ALinq\Source\Trunk\LinqToAccessDB\obj\Debug\ALinq.Access.csprojResolveAssemblyReference.cache
+D:\ALinq\Source\Trunk\LinqToAccessDB\obj\Debug\ALinq.Access.dll
+D:\ALinq\Source\Trunk\LinqToAccessDB\obj\Debug\ALinq.Access.pdb
+D:\Projects\ALinq\ALinq.Access\bin\Debug\ALinq.Access.dll
+D:\Projects\ALinq\ALinq.Access\bin\Debug\ALinq.Access.pdb
+D:\Projects\ALinq\ALinq.Access\bin\Debug\ALinq.dll
+D:\Projects\ALinq\ALinq.Access\bin\Debug\dao.dll
+D:\Projects\ALinq\ALinq.Access\bin\Debug\ALinq.pdb
+D:\Projects\ALinq\ALinq.Access\bin\Debug\ALinq.xml
+D:\Projects\ALinq\ALinq.Access\bin\Debug\zh-CN\ALinq.resources.dll
+D:\Projects\ALinq\ALinq.Access\obj\Debug\ALinq.Access.csprojResolveAssemblyReference.cache
+D:\Projects\ALinq\ALinq.Access\obj\Debug\ALinq.Access.dll
+D:\Projects\ALinq\ALinq.Access\obj\Debug\ALinq.Access.pdb

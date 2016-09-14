@@ -1,0 +1,7 @@
+D:\ALinq\Source\Trunk\ALinq.Web\bin\Debug\ALinq.Web.dll
+D:\ALinq\Source\Trunk\ALinq.Web\bin\Debug\ALinq.Web.pdb
+D:\ALinq\Source\Trunk\ALinq.Web\obj\Debug\ALinq.Web.csprojResolveAssemblyReference.cache
+D:\ALinq\Source\Trunk\ALinq.Web\obj\Debug\ALinq.Web.Properties.Resources.resources
+D:\ALinq\Source\Trunk\ALinq.Web\obj\Debug\ALinq.Web.csproj.GenerateResource.Cache
+D:\ALinq\Source\Trunk\ALinq.Web\obj\Debug\ALinq.Web.dll
+D:\ALinq\Source\Trunk\ALinq.Web\obj\Debug\ALinq.Web.pdb

@@ -1,0 +1,6 @@
+D:\ALinq\Source\Trunk\ALinq.DB2\bin\Free Edition Release\ALinq.DB2.dll
+D:\ALinq\Source\Trunk\ALinq.DB2\bin\Free Edition Release\ALinq.DB2.pdb
+D:\ALinq\Source\Trunk\ALinq.DB2\bin\Free Edition Release\IBM.Data.DB2.dll
+D:\ALinq\Source\Trunk\ALinq.DB2\obj\Free Edition Release\ALinq.DB2.dll
+D:\ALinq\Source\Trunk\ALinq.DB2\obj\Free Edition Release\ALinq.DB2.pdb
+D:\ALinq\Source\Trunk\ALinq.DB2\obj\Free Edition Release\ALinq.DB2.csprojResolveAssemblyReference.cache

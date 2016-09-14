@@ -8,7 +8,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>ALinq</RootNamespace>
     <AssemblyName>ALinq</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SccProjectName>
     </SccProjectName>
@@ -591,6 +591,5 @@
   </Target>
   -->
   <PropertyGroup>
-
   </PropertyGroup>
 </Project>

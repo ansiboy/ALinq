@@ -3,14 +3,12 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.30729</ProductVersion>
-    <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{EB362F8A-2604-4FC2-BBF0-72BFA6905C83}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>NorthwindDemo</RootNamespace>
     <AssemblyName>NorthwindDatabase</AssemblyName>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SccProjectName>
     </SccProjectName>
@@ -72,6 +70,7 @@
     <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Free Edition Release|AnyCPU'">
     <OutputPath>bin\Free Edition Release\</OutputPath>
@@ -88,6 +87,7 @@
     <CodeAnalysisIgnoreBuiltInRuleSets>false</CodeAnalysisIgnoreBuiltInRuleSets>
     <CodeAnalysisRuleDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
     <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
+    <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Free Edition Debug|AnyCPU'">
     <OutputPath>bin\Free Edition Debug\</OutputPath>
@@ -102,40 +102,9 @@
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
     <CodeAnalysisRuleSetDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\\Rule Sets</CodeAnalysisRuleSetDirectories>
     <CodeAnalysisRuleDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
+    <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="ALinq.DB2, Version=3.0.40.35, Culture=neutral, PublicKeyToken=2b23f34316d38f3a, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\Designer\Library.ALinq\ALinq.DB2.dll</HintPath>
-    </Reference>
-    <Reference Include="ALinq.Firebird, Version=3.0.40.35, Culture=neutral, PublicKeyToken=2b23f34316d38f3a, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\Designer\Library.ALinq\ALinq.Firebird.dll</HintPath>
-    </Reference>
-    <Reference Include="ALinq.MySQL, Version=3.0.40.35, Culture=neutral, PublicKeyToken=2b23f34316d38f3a, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\Designer\Library.ALinq\ALinq.MySQL.dll</HintPath>
-    </Reference>
-    <Reference Include="ALinq.Oracle, Version=3.0.40.35, Culture=neutral, PublicKeyToken=2b23f34316d38f3a, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\Designer\Library.ALinq\ALinq.Oracle.dll</HintPath>
-    </Reference>
-    <Reference Include="ALinq.Oracle.Odp, Version=3.0.40.35, Culture=neutral, PublicKeyToken=2b23f34316d38f3a, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\Designer\Library.ALinq\ALinq.Oracle.Odp.dll</HintPath>
-    </Reference>
-    <Reference Include="ALinq.PostgreSQL, Version=3.0.40.35, Culture=neutral, PublicKeyToken=2b23f34316d38f3a, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\Designer\Library.ALinq\ALinq.PostgreSQL.dll</HintPath>
-    </Reference>
-    <Reference Include="ALinq.SQLite, Version=3.0.40.35, Culture=neutral, PublicKeyToken=2b23f34316d38f3a, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\Designer\Library.ALinq\ALinq.SQLite.dll</HintPath>
-    </Reference>
-    <Reference Include="MySql.Data">
-      <HintPath>..\..\..\Library.DataProvider\MySql.Data.dll</HintPath>
-    </Reference>
-    <Reference Include="Oracle.DataAccess, Version=2.111.6.20, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=x86" />
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core">
@@ -162,6 +131,9 @@
     </Reference>
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="MySql.Data">
+      <HintPath>..\Assemblies\MySql.Data.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccessNorthwind.cs" />
@@ -339,6 +311,38 @@
     <ProjectReference Include="..\ALinq\ALinq.csproj">
       <Project>{CACC7600-A3D0-4E7F-9C03-88F98C762DBD}</Project>
       <Name>ALinq</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ALinq.DB2\ALinq.DB2.csproj">
+      <Project>{56454BBB-3936-4934-BD15-B817CF780F68}</Project>
+      <Name>ALinq.DB2</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ALinq.Access\ALinq.Access.csproj">
+      <Project>{4F75B64B-272F-4980-BF0D-F9C4547EEE01}</Project>
+      <Name>ALinq.Access</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ALinq.Firebird\ALinq.Firebird.csproj">
+      <Project>{BA4ACCD2-56D1-4929-AE72-ED2E41AA4511}</Project>
+      <Name>ALinq.Firebird</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ALinq.MySQL\ALinq.MySQL.csproj">
+      <Project>{19CA27CC-D798-43FC-9BF5-DFAE28287A37}</Project>
+      <Name>ALinq.MySQL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ALinq.OdpOracle\ALinq.OdpOracle.csproj">
+      <Project>{0921CA6D-32F3-46B2-92C2-9D46794A035F}</Project>
+      <Name>ALinq.OdpOracle</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ALinq.Orcale\ALinq.Oracle.csproj">
+      <Project>{12F17B3C-0EE9-48C2-9D22-B42DBEF2F16D}</Project>
+      <Name>ALinq.Oracle</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ALinq.PostgreSQL\ALinq.PostgreSQL.csproj">
+      <Project>{0729766C-7D6D-46FF-9DC7-BD5356296BDB}</Project>
+      <Name>ALinq.PostgreSQL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ALinq.SqlLite\ALinq.SQLite.csproj">
+      <Project>{FC4950EE-B6CE-421C-ACD1-14414AED0E77}</Project>
+      <Name>ALinq.SQLite</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -1,5 +1,0 @@
-D:\ALinq\Source\Trunk\LinqToFirebird\bin\Free Edition Release\ALinq.Firebird.dll
-D:\ALinq\Source\Trunk\LinqToFirebird\bin\Free Edition Release\ALinq.Firebird.pdb
-D:\ALinq\Source\Trunk\LinqToFirebird\obj\Free Edition Release\ALinq.Firebird.csprojResolveAssemblyReference.cache
-D:\ALinq\Source\Trunk\LinqToFirebird\obj\Free Edition Release\ALinq.Firebird.dll
-D:\ALinq\Source\Trunk\LinqToFirebird\obj\Free Edition Release\ALinq.Firebird.pdb

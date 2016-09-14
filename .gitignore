@@ -1,4 +1,5 @@
-/**/bin
-/**/obj
-/Test/TestResults
-/Test/obj
+.vs
+**/bin
+**/obj
+Test/TestResults
+Test/obj

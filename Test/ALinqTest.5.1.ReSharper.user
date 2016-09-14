@@ -1,0 +1,29 @@
+<Configuration>
+  <SettingsComponent>
+    <string />
+    <integer />
+    <boolean>
+      <setting name="SolutionAnalysisEnabled">False</setting>
+    </boolean>
+  </SettingsComponent>
+  <RecentFiles>
+    <RecentFiles>
+      <File id="EB362F8A-2604-4FC2-BBF0-72BFA6905C83/f:PgsqlNorthwind.cs" caret="270" fromTop="12" />
+      <File id="B23654A0-1960-4F81-8447-63768C442C97/f:SqlTest.cs" caret="37051" fromTop="9" />
+    </RecentFiles>
+    <RecentEdits>
+      <File id="EB362F8A-2604-4FC2-BBF0-72BFA6905C83/f:PgsqlNorthwind.cs" caret="450" fromTop="17" />
+      <File id="B23654A0-1960-4F81-8447-63768C442C97/f:SqlTest.cs" caret="37378" fromTop="16" />
+    </RecentEdits>
+  </RecentFiles>
+  <NAntValidationSettings>
+    <NAntPath value="" />
+  </NAntValidationSettings>
+  <UnitTestRunner>
+    <Providers />
+  </UnitTestRunner>
+  <UnitTestRunnerNUnit>
+    <NUnitInstallDir>C:\Program Files (x86)\NUnit 2.6.2\bin\net-2.0\</NUnitInstallDir>
+    <UseAddins>Never</UseAddins>
+  </UnitTestRunnerNUnit>
+</Configuration>

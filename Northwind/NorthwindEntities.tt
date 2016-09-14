@@ -1,0 +1,510 @@
+<#@ template inherits="Microsoft.VisualStudio.TextTemplating.VSHost.ModelingTextTransformation" hostspecific="true" language="C#v3.5" debug="true" #>
+<#@ ALinq processor="CodeGenerator" requires="ModelFile='Northwind.admf'"#>
+<#@ output extension=".cs" #>
+<#@ assembly name="System.Core.dll" #>
+<#@ import namespace="System" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace = "System.Text.RegularExpressions" #>
+<#@ import namespace = "System.Linq" #>
+using ALinq;
+using ALinq.Mapping;
+using System;
+using System.ComponentModel;
+using System.Reflection;
+
+<#
+GenerateDatabase(Database);
+foreach(EnvDTE.ProjectItem projectItem in TemplateProjectItem.ProjectItems){
+	if (OutputFiles.Contains(projectItem.Name))
+		continue;
+	projectItem.Delete();
+}
+#>
+<#+ 
+bool IsOneClassPerFile(){
+	//If you want to generate all the entities in one file, please return the false value.
+	return true;
+}
+#>
+<#+ 
+void GenerateDatabase(IDatabase database){
+	if(!String.IsNullOrEmpty(database.ContextNamespace)){
+		WriteLine("namespace {0}", database.ContextNamespace);
+		WriteLine("{");
+		PushIndent();
+	}
+	
+	GenerateDocument(database);
+	GenerateCustomAttributes(database);
+	//Generate the constructor
+	WriteLine("public partial class {0} : ALinq.DataContext", database.Class);
+	WriteLine("{");
+	PushIndent();
+	
+	WriteLine("public {0}(string connection) : base(connection)", database.Class);
+	WriteLine("{");
+	WriteLine("}");
+
+	WriteLine("public {0}(System.Data.IDbConnection connection) : base(connection)", database.Class);
+	WriteLine("{");
+	WriteLine("}");
+
+	WriteLine("public {0}(string connection, MappingSource mapping) : base(connection, mapping)", database.Class);
+	WriteLine("{");
+	WriteLine("}");
+
+	WriteLine("public {0}(System.Data.IDbConnection connection, MappingSource mapping) : base(connection, mapping)", database.Class);
+	WriteLine("{");
+	WriteLine("}");
+
+	//Generate properties
+	foreach(var table in database.Tables){
+		WriteLine();
+		WriteLine("public ALinq.Table<{0}> {1}", table.Type.Name, table.Member);
+		WriteLine("{");
+		PushIndent();
+		WriteLine("get");
+		WriteLine("{");
+		PushIndent();
+		WriteLine("return this.GetTable<{0}>();", table.Type.Name);
+		PopIndent();
+		WriteLine("}");
+		PopIndent();
+		WriteLine("}");
+	}
+	
+	PopIndent();
+	WriteLine("}");
+	
+	if(!String.IsNullOrEmpty(database.ContextNamespace)){
+		PopIndent();
+		WriteLine("}");
+	}
+	
+	if (IsOneClassPerFile())
+		SaveOutput(database.Class);
+	
+	if (IsOneClassPerFile()) {
+		foreach(var table in database.Tables){
+			GenerateTable(table);
+		}
+	}
+	else {
+		WriteLine();
+		if(!String.IsNullOrEmpty(database.EntityNamespace)){
+			WriteLine("namespace {0}", database.EntityNamespace);
+			WriteLine("{");
+			PushIndent();		
+		}
+		
+		foreach(var table in database.Tables){
+			if(table != database.Tables.First()){
+				WriteLine();
+			}
+			GenerateTable(table);
+		}
+		
+		if(!String.IsNullOrEmpty(database.EntityNamespace)){
+			PopIndent();		
+			WriteLine("}");
+		}
+	}
+}
+#>
+<#+ 
+void GenerateTable(ITable table){
+	if (IsOneClassPerFile()) {
+		ImportEntityNamespaces();
+		WriteLine();
+		if(!String.IsNullOrEmpty(Database.EntityNamespace)){
+			WriteLine("namespace {0}", Database.EntityNamespace);
+			WriteLine("{");
+			PushIndent();		
+		}
+	}	
+	
+	GenerateDocument(table.Type);
+	GenerateCustomAttributes(table.Type);
+	Write("[Table(");
+	if(!string.IsNullOrEmpty(table.Name))
+		Write("Name=\"{0}\"", table.Name);
+	WriteLine(")]");
+	
+	var stack = new Stack<IType>();
+	foreach(var subType in table.Type.SubTypes){
+		stack.Push(subType);
+	}
+	if(table.Type.SubTypes.Count()>0){
+		WriteLine("[InheritanceMapping(Code=\"{0}\", Type=typeof({1}), IsDefault={2})]",
+					  table.Type.InheritanceCode, table.Type.Name, table.Type.IsInheritanceDefault.ToString().ToLower());
+	}
+	while(stack.Count > 0){
+		var item = stack.Pop();
+		WriteLine("[InheritanceMapping(Code=\"{0}\", Type=typeof({1}), IsDefault={2})]",
+				  item.InheritanceCode, item.Name, item.IsInheritanceDefault.ToString().ToLower());
+		foreach(var subType in item.SubTypes){
+			stack.Push(subType);
+		}				  
+	}
+	GenerateType(table.Type, null);	
+	
+	if (IsOneClassPerFile()) {
+		if(!String.IsNullOrEmpty(Database.EntityNamespace)){
+			PopIndent();
+			WriteLine("}");
+		}
+		SaveOutput(table.Type.Name);
+	}
+}
+#>
+<#+ 
+void GenerateType(IType type, string parentType){
+	if (string.IsNullOrEmpty(parentType) == false) {
+		GenerateDocument(type);
+		GenerateCustomAttributes(type);
+	}
+	Write("public partial class {0}", type.Name);
+	if(!string.IsNullOrEmpty(parentType)){
+		Write(" : {0}", parentType);
+	} 
+	WriteLine();
+	WriteLine("{");
+	PushIndent();
+	
+	//Generate fields declare
+	foreach (var column in type.Columns) {
+		var columnType = column.Type;
+		if(column.CanBeNull && IsValueType(columnType)){
+			columnType = string.Format("Nullable<{0}>", columnType);
+		}
+		if (column.IsDelayLoaded)
+			WriteLine("private Link<{0}> {1};", column.Type, column.Storage);
+		else
+			WriteLine("private {0} {1};", columnType, column.Storage);
+	}
+	
+	//Define the variables
+	foreach(var association in type.Associations){
+		if(association.Cardinality == Cardinality.One){
+			WriteLine("private EntityRef<{0}> {1};", association.Type, association.Storage);
+		}else{
+			WriteLine("private EntitySet<{0}> {1};", association.Type, association.Storage);
+		}
+	}
+	
+	//Generate the constructor
+	WriteLine();
+	WriteLine("public {0}()", type.Name);
+	WriteLine("{");
+	PushIndent();
+	foreach(var association in type.Associations){
+		if(association.Cardinality == Cardinality.One){
+			WriteLine("this.{0} = default(EntityRef<{1}>);", association.Storage, association.Type);
+		}else{
+			WriteLine("this.{0} = new EntitySet<{1}>();", association.Storage, association.Type);
+		}
+	}
+	
+	PopIndent();
+	WriteLine("}");
+	
+	foreach(var column in type.Columns){
+		WriteLine();
+		GenerateColumn(column);
+	}
+	
+	foreach(var association in type.Associations){
+		WriteLine();
+		GenerateAssociation(association);
+	}
+
+	PopIndent();
+	WriteLine("}");
+	
+	foreach(var subType in type.SubTypes){
+		WriteLine();
+		GenerateType(subType, type.Name);
+	}
+	
+}
+#>
+<#+ 
+
+
+void GenerateColumn(IColumn column){
+	GenerateCustomAttributes(column);
+	GenerateDocument(column);
+	Write("[Column(CanBeNull={0}, UpdateCheck=UpdateCheck.{1}", 
+		  column.CanBeNull.ToString().ToLower(), column.UpdateCheck);
+	if(column.IsPrimaryKey){
+		Write(", IsPrimaryKey=true");
+	}	  
+	if(column.AutoSync != AutoSync.Default){
+		Write(", AutoSync=AutoSync.{0}", column.AutoSync);
+	}
+	if(column.IsDbGenerated){
+		Write(", IsDbGenerated=true");
+	}
+	if(!string.IsNullOrEmpty(column.Name)){
+		Write(", Name=\"{0}\"", column.Name);
+	}	
+	if(!string.IsNullOrEmpty(column.DbType)){
+		Write(", DbType=\"{0}\"", column.DbType);	
+	}
+	if(column.IsDiscriminator){
+		Write(", IsDiscriminator=true");	
+	}
+	WriteLine(")]");
+	GenerateModifier(column);	
+	
+	var type = column.Type;
+	if(column.CanBeNull && IsValueType(type)){
+		type = string.Format("Nullable<{0}>", type);
+	}
+	WriteLine("{0} {1}", type, column.Member);
+
+	WriteLine("{");
+	PushIndent();
+	
+	WriteLine("get");
+	WriteLine("{");
+	PushIndent();
+	
+	if (column.IsDelayLoaded)
+		WriteLine("return {0}.Value;", column.Storage);
+	else
+		WriteLine("return {0};", column.Storage);
+	
+	PopIndent();
+	WriteLine("}");
+	
+	GenerateSetterModifier(column);
+	WriteLine("set");
+	WriteLine("{");
+	PushIndent();
+	
+	if (column.IsDelayLoaded){
+		WriteLine ("{0}.Value = value;", column.Storage); 
+	}
+	else {
+		WriteLine ("{0} = value;", column.Storage);
+	}
+	PopIndent();
+	WriteLine("}");
+	
+	PopIndent();
+	WriteLine("}");
+}
+#>
+<#+
+bool IsValueType(string type){
+	var t = Type.GetType(type);
+	if(t != null && t.IsValueType)
+		return true;
+	return false;
+}
+#>
+<#+ 
+void GenerateAssociation(IAssociation association){
+	GenerateDocument(association);
+	GenerateCustomAttributes(association);
+	if(association.Cardinality == Cardinality.One){
+		Write("[Association(Storage=\"{0}\", ThisKey=\"{1}\", OtherKey=\"{2}\", IsForeignKey=true",
+			  association.Storage, association.ThisKey, association.OtherKey);
+		if(!string.IsNullOrEmpty(association.Name))
+			Write(", Name=\"{0}\"", association.Name);	  
+		WriteLine(")]");
+		
+		GenerateModifier(association);	
+		WriteLine("{0} {1}", association.Type, association.Member);
+		WriteLine("{");
+		PushIndent();
+		WriteLine("get");
+		WriteLine("{");
+		PushIndent();
+		WriteLine("return this.{0}.Entity;", association.Storage);
+		PopIndent();
+		WriteLine("}");
+		
+		GenerateSetterModifier(association);
+		WriteLine("set");
+		WriteLine("{");
+		PushIndent();
+		WriteLine("this.{0}.Entity = value;", association.Storage);
+		PopIndent();
+		WriteLine("}");
+		PopIndent();
+		WriteLine("}");
+	}else{
+		Write("[Association(Storage=\"{0}\", ThisKey=\"{1}\", OtherKey=\"{2}\", IsForeignKey=false",
+			  association.Storage, association.ThisKey, association.OtherKey);
+		if(!string.IsNullOrEmpty(association.Name))
+			Write(", Name=\"{0}\"", association.Name);	  
+		WriteLine(")]");
+				
+		GenerateModifier(association);				  
+		WriteLine("EntitySet<{0}> {1}", association.Type, association.Member);
+		WriteLine("{");
+		PushIndent();
+		
+		WriteLine("get");
+		WriteLine("{");
+		PushIndent();
+		WriteLine("return this.{0};", association.Storage);
+		PopIndent();
+		WriteLine("}");
+		
+		GenerateSetterModifier(association);
+		WriteLine("set");
+		WriteLine("{");
+		PushIndent();
+		WriteLine("this.{0}.Assign(value);", association.Storage);
+		PopIndent();
+		WriteLine("}");
+		
+		PopIndent();
+		WriteLine("}");
+	}
+}
+#>
+<#+ 
+void GenerateCustomAttributes(INode node){
+	if (node.CustomAttributes.Count() == 0)
+		return;
+	
+	Write("[");
+	foreach (var attribute in node.CustomAttributes) {
+		Write(attribute.Name);
+		Write("(");
+		foreach (var parameter in attribute.Parameters) {
+			if (string.IsNullOrEmpty(parameter.Name)) {
+				Write(parameter.Value);
+			}
+			else {
+				Write(parameter.Name);
+				Write(" = ");
+				Write(parameter.Value);
+			}
+			
+			if (parameter != attribute.Parameters.Last()) {
+				Write(",");
+			}
+		}
+		Write(")");
+	}
+	WriteLine("]");	 
+}
+#>
+<#+ 
+void GenerateDocument (INode node) {
+	var doc = node.Documentation;
+	if (doc == null) 
+		return;
+	
+	if (!string.IsNullOrEmpty(doc.Summary))	
+		WriteLine("/// <summary>{0}</summary>", doc.Summary);
+	if (!string.IsNullOrEmpty(doc.LongDescription))
+		WriteLine("/// <LongDescription>{0}</LongDescription>", doc.LongDescription);	
+}
+#>
+<#+ 
+void GenerateClassModifier(IType type){
+	if (type.InheritanceModifier == ClassModifier.Sealed) {
+		Write("sealed ");
+	}
+	else if (type.InheritanceModifier == ClassModifier.Abstract) {
+		Write("abstract ");
+	}
+}
+#>
+<#+ 
+void GenerateModifier(INode node){
+	AccessModifier? accessModifier = null;
+	MemberModifier? memberModifier = null;
+	
+	if (node is IColumn) {
+		accessModifier = ((IColumn)node).AccessModifier;
+		memberModifier = ((IColumn)node).InheritanceModifier;
+	} 
+	else if (node is IAssociation) {
+		accessModifier = ((IAssociation)node).AccessModifier;
+		memberModifier = ((IAssociation)node).InheritanceModifier;
+	}
+	
+	if (accessModifier != null) {
+		Write("{0} ", accessModifier.ToString().ToLower());
+	}
+	if (memberModifier != null) {
+		if (memberModifier == MemberModifier.Virtual) {
+			Write("virtual ");
+		}
+		else if (memberModifier == MemberModifier.Override) {
+			Write("override ");
+		}
+		else if (memberModifier == MemberModifier.New) {
+			Write("new ");
+		}
+		else if (memberModifier == MemberModifier.NewVirtual) {
+			Write("new virtual ");
+		}
+	}
+}
+#>
+<#+ 
+void GenerateSetterModifier(INode node){
+	AccessModifier? setterModifier = null, modifier = null;
+	if (node is IColumn) {
+		setterModifier = ((IColumn)node).SetterAccessModifier;
+		modifier = ((IColumn)node).AccessModifier;
+	} 
+	else if (node is IAssociation) {
+		setterModifier = ((IAssociation)node).SetterAccessModifier;
+		modifier = ((IAssociation)node).AccessModifier;
+	}
+	if (setterModifier != null) {
+		if (setterModifier != modifier){
+			Write("{0} ", setterModifier.ToString().ToLower());
+		}
+	}
+}
+#>
+<#+ 
+void PushIndent(){
+	base.PushIndent("    ");
+} 
+void WriteLine(){
+	base.WriteLine("");
+}
+#>
+<#+ 
+void ImportEntityNamespaces(){
+	WriteLine("using System;");
+	WriteLine("using ALinq;");
+	WriteLine("using ALinq.Mapping;");
+}
+#>
+<#+ 
+void SaveOutput(string name)
+{
+    var templateDirectory = System.IO.Path.GetDirectoryName(Host.TemplateFile);
+    var fileInfo = new System.IO.FileInfo(Host.TemplateFile);
+    var outputFileName = fileInfo.Name.Substring(0, fileInfo.Name.Length - fileInfo.Extension.Length) + "." + name + ".cs";
+    var outputFilePath = System.IO.Path.Combine(templateDirectory, outputFileName);
+	//WriteLine(outputFileName);
+    System.IO.File.WriteAllText(outputFilePath, this.GenerationEnvironment.ToString());
+    this.GenerationEnvironment = new System.Text.StringBuilder();
+    TemplateProjectItem.ProjectItems.AddFromFile(outputFilePath);
+    OutputFiles.Add(outputFileName);
+}
+List<string> _OutputFiles;
+List<string> OutputFiles{
+	get{
+		if (_OutputFiles == null) {
+			_OutputFiles = new List<string>();
+		}
+		return _OutputFiles;
+	}
+}
+#>
+
+

@@ -1,0 +1,5 @@
+D:\ALinq\Source\Trunk\LinqToMySQL\bin\Free Edition Release\ALinq.MySQL.dll
+D:\ALinq\Source\Trunk\LinqToMySQL\bin\Free Edition Release\ALinq.MySQL.pdb
+D:\ALinq\Source\Trunk\LinqToMySQL\obj\Free Edition Release\ALinq.MySQL.dll
+D:\ALinq\Source\Trunk\LinqToMySQL\obj\Free Edition Release\ALinq.MySQL.pdb
+D:\ALinq\Source\Trunk\LinqToMySQL\obj\Free Edition Release\ALinq.MySQL.csprojResolveAssemblyReference.cache

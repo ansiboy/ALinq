@@ -1,0 +1,17 @@
+D:\ALinq\Source\Trunk\LinqToSqlLite\bin\Debug\ALinq.SQLite.dll
+D:\ALinq\Source\Trunk\LinqToSqlLite\bin\Debug\ALinq.SQLite.pdb
+D:\ALinq\Source\Trunk\LinqToSqlLite\bin\Debug\System.Data.SQLite.dll
+D:\ALinq\Source\Trunk\LinqToSqlLite\bin\Debug\System.Data.SQLite.xml
+D:\ALinq\Source\Trunk\LinqToSqlLite\obj\Debug\ALinq.SQLite.csprojResolveAssemblyReference.cache
+D:\ALinq\Source\Trunk\LinqToSqlLite\obj\Debug\ALinq.SQLite.dll
+D:\ALinq\Source\Trunk\LinqToSqlLite\obj\Debug\ALinq.SQLite.pdb
+D:\Projects\ALinq\ALinq.SqlLite\bin\Debug\ALinq.SQLite.dll
+D:\Projects\ALinq\ALinq.SqlLite\bin\Debug\ALinq.SQLite.pdb
+D:\Projects\ALinq\ALinq.SqlLite\bin\Debug\ALinq.dll
+D:\Projects\ALinq\ALinq.SqlLite\bin\Debug\System.Data.SQLite.DLL
+D:\Projects\ALinq\ALinq.SqlLite\bin\Debug\ALinq.pdb
+D:\Projects\ALinq\ALinq.SqlLite\bin\Debug\ALinq.xml
+D:\Projects\ALinq\ALinq.SqlLite\bin\Debug\zh-CN\ALinq.resources.dll
+D:\Projects\ALinq\ALinq.SqlLite\obj\Debug\ALinq.SQLite.csprojResolveAssemblyReference.cache
+D:\Projects\ALinq\ALinq.SqlLite\obj\Debug\ALinq.SQLite.dll
+D:\Projects\ALinq\ALinq.SqlLite\obj\Debug\ALinq.SQLite.pdb

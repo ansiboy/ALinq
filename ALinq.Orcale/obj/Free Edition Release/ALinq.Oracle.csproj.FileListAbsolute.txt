@@ -1,0 +1,6 @@
+D:\ALinq\Source\Trunk\LinqToOrcale\bin\Free Edition Release\ALinq.Oracle.dll
+D:\ALinq\Source\Trunk\LinqToOrcale\bin\Free Edition Release\ALinq.Oracle.pdb
+D:\ALinq\Source\Trunk\LinqToOrcale\bin\Free Edition Release\System.Data.OracleClient.dll
+D:\ALinq\Source\Trunk\LinqToOrcale\obj\Free Edition Release\ALinq.Oracle.dll
+D:\ALinq\Source\Trunk\LinqToOrcale\obj\Free Edition Release\ALinq.Oracle.pdb
+D:\ALinq\Source\Trunk\LinqToOrcale\obj\Free Edition Release\ALinq.Oracle.csprojResolveAssemblyReference.cache

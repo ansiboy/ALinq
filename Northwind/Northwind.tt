@@ -1,0 +1,25 @@
+﻿<#@ template inherits="Microsoft.VisualStudio.TextTemplating.VSHost.ModelingTextTransformation" language="C#"#>
+<#@ ORDesigner processor="ORDesignerDirectiveProcessor" requires="FileName='Northwind.admf'"#>
+/*
+<#
+foreach(ITable table in dataContext.Tables)
+{
+	IType type = table.Type;	
+#>
+public partial class <#= type.Name #> 
+{
+<# foreach(IColumn column in type.Columns){ #>
+	public <#= column.Type #> <#= column.Member #>
+	{
+	}
+<#}#>
+}
+<#
+	foreach(IType subType in type.SubTypes)
+	{
+#>
+<#
+	}
+}
+#>
+*/

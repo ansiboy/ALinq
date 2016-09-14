@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TestRun id="65111ead-8daa-43a7-a542-f3046a31a4f1" name="Mike@MIKE-NOTEBOOK2 2013-06-19 23:36:13" runUser="MIKE-NOTEBOOK2\Mike" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2006">
+  <TestRunConfiguration name="Default Run Configuration" id="d3d840be-2c2a-45d5-a43d-ab4eaa8d4f59">
+    <Deployment runDeploymentRoot="D:\ALinq\Source\Trunk\Test\TestResults\Mike_MIKE-NOTEBOOK2 2013-06-19 23_36_13">
+      <DeploymentItem filename="D:\ALinq\Source\Trunk\Northwind\bin\Debug\NorthwindDatabase.dll" />
+      <DeploymentItem filename="D:\ALinq\Source\Trunk\Test\bin\Debug\Oracle.DataAccess.dll" />
+    </Deployment>
+    <Hosts skipUnhostableTests="false" />
+    <TestTypeSpecific />
+  </TestRunConfiguration>
+  <ResultSummary outcome="Completed">
+    <Counters total="1" executed="1" passed="1" error="0" failed="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+  </ResultSummary>
+  <Times creation="2013-06-19T23:36:13.8479826+08:00" queuing="2013-06-19T23:36:17.7802075+08:00" start="2013-06-19T23:36:18.4342449+08:00" finish="2013-06-19T23:36:50.9441044+08:00" />
+  <TestDefinitions>
+    <UnitTest name="GroupBy_Min" storage="d:\alinq\source\trunk\test\bin\debug\test.dll" id="9295f4f6-8b7b-703b-2e8a-b630e4c11427">
+      <Css projectStructure="" iteration="" />
+      <Owners>
+        <Owner name="" />
+      </Owners>
+      <Execution id="9202e331-ffb9-4e1f-82b0-47bfc422265e" />
+      <TestMethod codeBase="D:\ALinq\Source\Trunk\Test\bin\Debug\Test.dll" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="Test.SQLiteTest, Test" name="GroupBy_Min" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <TestEntries>
+    <TestEntry testId="9295f4f6-8b7b-703b-2e8a-b630e4c11427" executionId="9202e331-ffb9-4e1f-82b0-47bfc422265e" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <Results>
+    <UnitTestResult executionId="9202e331-ffb9-4e1f-82b0-47bfc422265e" testId="9295f4f6-8b7b-703b-2e8a-b630e4c11427" testName="GroupBy_Min" computerName="MIKE-NOTEBOOK2" duration="00:00:30.1933067" startTime="2013-06-19T23:36:18.8432683+08:00" endTime="2013-06-19T23:36:50.6840895+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d">
+      <Output>
+        <StdOut>This software is unregistered and will be expired after 111 days.
+
+SELECT IFNULL(MIN([t0].[UnitPrice]),0) AS [MinPrice], [t0].[CategoryID] AS [Key]
+FROM [Products] AS [t0]
+GROUP BY [t0].[CategoryID]
+-- CommandType: Text
+-- Context: SQLiteProvider Model: SQLite AttributedMetaModel Build: 3.0.40.35
+
+SELECT IFNULL(MIN([t0].[OrderDate]), DATE('0001-01-01')) AS [MinDate], [t0].[EmployeeID] AS [Key]
+FROM [Orders] AS [t0]
+GROUP BY [t0].[EmployeeID]
+-- CommandType: Text
+-- Context: SQLiteProvider Model: SQLite AttributedMetaModel Build: 3.0.40.35
+
+0001/1/1 0:00:00</StdOut>
+      </Output>
+    </UnitTestResult>
+  </Results>
+</TestRun>

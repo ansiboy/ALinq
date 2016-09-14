@@ -1,0 +1,6 @@
+D:\ALinq\Source\Trunk\OdpOracle\bin\Free Edition Release\ALinq.Oracle.Odp.dll
+D:\ALinq\Source\Trunk\OdpOracle\bin\Free Edition Release\ALinq.Oracle.Odp.pdb
+D:\ALinq\Source\Trunk\OdpOracle\bin\Free Edition Release\Oracle.DataAccess.dll
+D:\ALinq\Source\Trunk\OdpOracle\obj\Free Edition Release\ALinq.Oracle.Odp.dll
+D:\ALinq\Source\Trunk\OdpOracle\obj\Free Edition Release\ALinq.Oracle.Odp.pdb
+D:\ALinq\Source\Trunk\OdpOracle\obj\Free Edition Release\ALinq.OdpOracle.csprojResolveAssemblyReference.cache

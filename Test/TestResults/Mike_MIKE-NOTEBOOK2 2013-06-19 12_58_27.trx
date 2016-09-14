@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TestRun id="bd915ebf-39c0-4221-9a08-0ec0eb9fad20" name="Mike@MIKE-NOTEBOOK2 2013-06-19 12:58:27" runUser="MIKE-NOTEBOOK2\Mike" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2006">
+  <TestRunConfiguration name="Default Run Configuration" id="d3b22174-25d1-4232-b330-f0779c09016a">
+    <Deployment userDeploymentRoot="D:\ALinq\Source\Trunk\Test\TestResults" useDefaultDeploymentRoot="false" runDeploymentRoot="D:\ALinq\Source\Trunk\Test\TestResults\Mike_MIKE-NOTEBOOK2 2013-06-19 12_58_27">
+      <DeploymentItem filename="D:\ALinq\Source\Trunk\Northwind\bin\Debug\NorthwindDatabase.dll" />
+      <DeploymentItem filename="D:\ALinq\Source\Trunk\Test\bin\Debug\Oracle.DataAccess.dll" />
+    </Deployment>
+    <Hosts skipUnhostableTests="false" />
+    <TestTypeSpecific />
+  </TestRunConfiguration>
+  <ResultSummary outcome="Error">
+    <Counters total="1" executed="1" error="0" failed="0" timeout="0" aborted="1" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" passed="0" completed="0" inProgress="0" pending="0" />
+    <RunInfos>
+      <RunInfo computerName="MIKE-NOTEBOOK2" outcome="Error" timestamp="2013-06-19T12:59:09.5178834+08:00">
+        <Text>Test host process exited unexpectedly.</Text>
+      </RunInfo>
+    </RunInfos>
+  </ResultSummary>
+  <Times creation="2013-06-19T12:58:27.8585006+08:00" queuing="2013-06-19T12:58:48.8447010+08:00" start="2013-06-19T12:58:49.5717426+08:00" finish="2013-06-19T12:59:09.5188835+08:00" />
+  <TestDefinitions>
+    <UnitTest name="GroupBy_Min" storage="d:\alinq\source\trunk\test\bin\debug\test.dll" id="e166480e-5731-94f6-6b47-d1373309f64e">
+      <Css projectStructure="" iteration="" />
+      <Owners>
+        <Owner name="" />
+      </Owners>
+      <Execution id="18a66ab4-23aa-44b5-ac9a-935611ce8849" />
+      <TestMethod codeBase="D:\ALinq\Source\Trunk\Test\bin\Debug\Test.dll" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="Test.FirebirdTest, Test" name="GroupBy_Min" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <TestEntries>
+    <TestEntry testId="e166480e-5731-94f6-6b47-d1373309f64e" executionId="01d4e4cd-2824-4430-a52e-e69af0372eac" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <Results>
+    <UnitTestResult executionId="01d4e4cd-2824-4430-a52e-e69af0372eac" testId="e166480e-5731-94f6-6b47-d1373309f64e" testName="GroupBy_Min" computerName="MIKE-NOTEBOOK2" duration="00:00:19.5271169" startTime="2013-06-19T12:58:49.9917666+08:00" endTime="2013-06-19T12:59:09.5188835+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Aborted" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d">
+    </UnitTestResult>
+  </Results>
+</TestRun>

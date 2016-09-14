@@ -1,0 +1,16 @@
+D:\ALinq\Source\Trunk\OdpOracle\bin\Debug\ALinq.Oracle.Odp.dll
+D:\ALinq\Source\Trunk\OdpOracle\bin\Debug\ALinq.Oracle.Odp.pdb
+D:\ALinq\Source\Trunk\OdpOracle\obj\Debug\ALinq.OdpOracle.csprojResolveAssemblyReference.cache
+D:\ALinq\Source\Trunk\OdpOracle\obj\Debug\ALinq.Oracle.Odp.dll
+D:\ALinq\Source\Trunk\OdpOracle\obj\Debug\ALinq.Oracle.Odp.pdb
+D:\ALinq\Source\Trunk\OdpOracle\bin\Debug\Oracle.DataAccess.dll
+D:\Projects\ALinq\ALinq.OdpOracle\bin\Debug\ALinq.Oracle.Odp.dll
+D:\Projects\ALinq\ALinq.OdpOracle\bin\Debug\ALinq.Oracle.Odp.pdb
+D:\Projects\ALinq\ALinq.OdpOracle\bin\Debug\ALinq.dll
+D:\Projects\ALinq\ALinq.OdpOracle\bin\Debug\Oracle.DataAccess.dll
+D:\Projects\ALinq\ALinq.OdpOracle\bin\Debug\ALinq.pdb
+D:\Projects\ALinq\ALinq.OdpOracle\bin\Debug\ALinq.xml
+D:\Projects\ALinq\ALinq.OdpOracle\bin\Debug\zh-CN\ALinq.resources.dll
+D:\Projects\ALinq\ALinq.OdpOracle\obj\Debug\ALinq.OdpOracle.csprojResolveAssemblyReference.cache
+D:\Projects\ALinq\ALinq.OdpOracle\obj\Debug\ALinq.Oracle.Odp.dll
+D:\Projects\ALinq\ALinq.OdpOracle\obj\Debug\ALinq.Oracle.Odp.pdb

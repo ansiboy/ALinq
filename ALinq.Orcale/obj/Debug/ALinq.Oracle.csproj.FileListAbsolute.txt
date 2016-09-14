@@ -1,6 +1,0 @@
-D:\ALinq\Source\Trunk\LinqToOrcale\bin\Debug\ALinq.Oracle.dll
-D:\ALinq\Source\Trunk\LinqToOrcale\bin\Debug\ALinq.Oracle.pdb
-D:\ALinq\Source\Trunk\LinqToOrcale\bin\Debug\System.Data.OracleClient.dll
-D:\ALinq\Source\Trunk\LinqToOrcale\obj\Debug\ALinq.Oracle.csprojResolveAssemblyReference.cache
-D:\ALinq\Source\Trunk\LinqToOrcale\obj\Debug\ALinq.Oracle.dll
-D:\ALinq\Source\Trunk\LinqToOrcale\obj\Debug\ALinq.Oracle.pdb

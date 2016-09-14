@@ -1,7 +1,0 @@
-D:\ALinq\Source\Trunk\LinqToSqlLite\bin\Free Edition Release\ALinq.SQLite.dll
-D:\ALinq\Source\Trunk\LinqToSqlLite\bin\Free Edition Release\ALinq.SQLite.pdb
-D:\ALinq\Source\Trunk\LinqToSqlLite\bin\Free Edition Release\System.Data.SQLite.dll
-D:\ALinq\Source\Trunk\LinqToSqlLite\bin\Free Edition Release\System.Data.SQLite.xml
-D:\ALinq\Source\Trunk\LinqToSqlLite\obj\Free Edition Release\ALinq.SQLite.dll
-D:\ALinq\Source\Trunk\LinqToSqlLite\obj\Free Edition Release\ALinq.SQLite.pdb
-D:\ALinq\Source\Trunk\LinqToSqlLite\obj\Free Edition Release\ALinq.SQLite.csprojResolveAssemblyReference.cache

@@ -1,7 +1,0 @@
-D:\ALinq\Source\Trunk\ALinq.Web\bin\Free Edition Release\ALinq.Web.dll
-D:\ALinq\Source\Trunk\ALinq.Web\bin\Free Edition Release\ALinq.Web.pdb
-D:\ALinq\Source\Trunk\ALinq.Web\obj\Free Edition Release\ALinq.Web.Properties.Resources.resources
-D:\ALinq\Source\Trunk\ALinq.Web\obj\Free Edition Release\ALinq.Web.csproj.GenerateResource.Cache
-D:\ALinq\Source\Trunk\ALinq.Web\obj\Free Edition Release\ALinq.Web.dll
-D:\ALinq\Source\Trunk\ALinq.Web\obj\Free Edition Release\ALinq.Web.pdb
-D:\ALinq\Source\Trunk\ALinq.Web\obj\Free Edition Release\ALinq.Web.csprojResolveAssemblyReference.cache

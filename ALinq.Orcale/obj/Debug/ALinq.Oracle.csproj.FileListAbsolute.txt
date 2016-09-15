@@ -4,3 +4,13 @@ D:\ALinq\Source\Trunk\LinqToOrcale\bin\Debug\System.Data.OracleClient.dll
 D:\ALinq\Source\Trunk\LinqToOrcale\obj\Debug\ALinq.Oracle.csprojResolveAssemblyReference.cache
 D:\ALinq\Source\Trunk\LinqToOrcale\obj\Debug\ALinq.Oracle.dll
 D:\ALinq\Source\Trunk\LinqToOrcale\obj\Debug\ALinq.Oracle.pdb
+D:\Projects\ALinq\ALinq.Orcale\bin\Debug\ALinq.Oracle.dll
+D:\Projects\ALinq\ALinq.Orcale\bin\Debug\ALinq.Oracle.pdb
+D:\Projects\ALinq\ALinq.Orcale\bin\Debug\ALinq.dll
+D:\Projects\ALinq\ALinq.Orcale\bin\Debug\System.Data.OracleClient.dll
+D:\Projects\ALinq\ALinq.Orcale\bin\Debug\ALinq.pdb
+D:\Projects\ALinq\ALinq.Orcale\bin\Debug\ALinq.xml
+D:\Projects\ALinq\ALinq.Orcale\bin\Debug\zh-CN\ALinq.resources.dll
+D:\Projects\ALinq\ALinq.Orcale\obj\Debug\ALinq.Oracle.csprojResolveAssemblyReference.cache
+D:\Projects\ALinq\ALinq.Orcale\obj\Debug\ALinq.Oracle.dll
+D:\Projects\ALinq\ALinq.Orcale\obj\Debug\ALinq.Oracle.pdb

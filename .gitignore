@@ -1,3 +1,9 @@
-**/bin
-**/obj
-Test/TestResults
+/**/bin
+/**/obj
+/ALinq/bin
+/ALinq/obj
+/ALinq.Access/bin
+/ALinq.Access/obj
+/ALinq.DB2/bin
+/ALinq.DB2/obj
+

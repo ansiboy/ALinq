@@ -4,8 +4,9 @@
 /ALinq/obj
 /ALinq.Access/bin
 /ALinq.Access/obj
-/ALinq.DB2/bin
-/ALinq.DB2/obj
 /ALinq.EffiProz/obj
 /ALinq.Firebird/obj
 /ALinq.MySQL/obj
+/.vs
+/ALinq.OdpOracle/obj
+/ALinq.Orcale/obj

@@ -7,24 +7,18 @@ namespace ALinq
 {
     internal class Constants
     {
-        private const string LAST0 = "1";
-#if FREE
-#if NET4
-        private const string LAST1 = ".48";
-#else
-        private const string LAST1 = ".38";
-#endif
-#else
+        private const string LAST0 = "20";
+
 #if NET4
         private const string LAST1 = ".40";
 #else
         private const string LAST1 = ".35";
 #endif
-#endif
+
 
         internal const string Company = "ALinq Team";
         internal const string Copyright = "Copyright @ ALinq Team";
-        internal const string ALinqVersion = "3.0." + LAST0 + LAST1;
+        internal const string ALinqVersion = "3.1." + LAST0 + LAST1;
         internal const string AccessVersion = ALinqVersion;//"1.9." + LAST0 + LAST1;
         internal const string SQLiteVersion = ALinqVersion;//"1.9." + LAST0 + LAST1;
         internal const string DB2Version = ALinqVersion;//"1.3." + LAST0 + LAST1;

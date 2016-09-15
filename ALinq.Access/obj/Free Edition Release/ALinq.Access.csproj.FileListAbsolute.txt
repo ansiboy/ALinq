@@ -1,6 +1,0 @@
-D:\ALinq\Source\Trunk\LinqToAccessDB\bin\Free Edition Release\ALinq.Access.dll
-D:\ALinq\Source\Trunk\LinqToAccessDB\bin\Free Edition Release\ALinq.Access.pdb
-D:\ALinq\Source\Trunk\LinqToAccessDB\bin\Free Edition Release\dao.dll
-D:\ALinq\Source\Trunk\LinqToAccessDB\obj\Free Edition Release\ALinq.Access.dll
-D:\ALinq\Source\Trunk\LinqToAccessDB\obj\Free Edition Release\ALinq.Access.pdb
-D:\ALinq\Source\Trunk\LinqToAccessDB\obj\Free Edition Release\ALinq.Access.csprojResolveAssemblyReference.cache

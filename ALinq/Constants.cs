@@ -7,7 +7,7 @@ namespace ALinq
 {
     internal class Constants
     {
-        private const string LAST0 = "51";
+        private const string LAST0 = "1";
 #if FREE
 #if NET4
         private const string LAST1 = ".48";

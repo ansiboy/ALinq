@@ -63,56 +63,21 @@
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="ALinq.Access, Version=3.0.40.35, Culture=neutral, PublicKeyToken=2b23f34316d38f3a, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\LinqToAccessDB\bin\Debug\ALinq.Access.dll</HintPath>
+    <Reference Include="FirebirdSql.Data.FirebirdClient">
+      <HintPath>..\Assemblies\FirebirdSql.Data.FirebirdClient.dll</HintPath>
     </Reference>
-    <Reference Include="ALinq.DB2, Version=3.0.40.35, Culture=neutral, PublicKeyToken=2b23f34316d38f3a, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\ALinq.DB2\bin\Debug\ALinq.DB2.dll</HintPath>
+    <Reference Include="IBM.Data.DB2">
+      <HintPath>..\Assemblies\IBM.Data.DB2.dll</HintPath>
     </Reference>
-    <Reference Include="ALinq.Firebird, Version=3.0.40.35, Culture=neutral, PublicKeyToken=2b23f34316d38f3a, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\LinqToFirebird\bin\Debug\ALinq.Firebird.dll</HintPath>
-    </Reference>
-    <Reference Include="ALinq.MySQL, Version=3.0.40.35, Culture=neutral, PublicKeyToken=2b23f34316d38f3a, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\LinqToMySQL\bin\Debug\ALinq.MySQL.dll</HintPath>
-    </Reference>
-    <Reference Include="ALinq.Oracle, Version=3.0.40.35, Culture=neutral, PublicKeyToken=2b23f34316d38f3a, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\LinqToOrcale\bin\Debug\ALinq.Oracle.dll</HintPath>
-    </Reference>
-    <Reference Include="ALinq.Oracle.Odp, Version=3.0.40.35, Culture=neutral, PublicKeyToken=2b23f34316d38f3a, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\OdpOracle\bin\Debug\ALinq.Oracle.Odp.dll</HintPath>
-    </Reference>
-    <Reference Include="ALinq.PostgreSQL, Version=3.0.40.35, Culture=neutral, PublicKeyToken=2b23f34316d38f3a, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\ALinq.PostgreSQL\bin\Debug\ALinq.PostgreSQL.dll</HintPath>
-    </Reference>
-    <Reference Include="ALinq.SQLite, Version=3.0.40.35, Culture=neutral, PublicKeyToken=2b23f34316d38f3a, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\LinqToSqlLite\bin\Debug\ALinq.SQLite.dll</HintPath>
-    </Reference>
-    <Reference Include="ALinq.Web, Version=3.0.40.35, Culture=neutral, PublicKeyToken=2b23f34316d38f3a, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\ALinq.Web\bin\Debug\ALinq.Web.dll</HintPath>
-    </Reference>
-    <Reference Include="FirebirdSql.Data.FirebirdClient, Version=3.0.2.0, Culture=neutral, PublicKeyToken=3750abcc3150b00c, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Library.DataProvider\FirebirdSql.Data.FirebirdClient.dll</HintPath>
-    </Reference>
-    <Reference Include="IBM.Data.DB2, Version=9.0.0.2, Culture=neutral, PublicKeyToken=7c307b91aa13d208, processorArchitecture=AMD64" />
     <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="Mono.Security">
-      <HintPath>..\..\..\..\DotNetProvider\Mono.Security.dll</HintPath>
+      <HintPath>..\Assemblies\Mono.Security.dll</HintPath>
     </Reference>
     <Reference Include="MySql.Data">
-      <HintPath>..\..\..\Library.DataProvider\MySql.Data.dll</HintPath>
+      <HintPath>..\Assemblies\MySql.Data.dll</HintPath>
     </Reference>
     <Reference Include="Npgsql">
-      <HintPath>..\..\..\..\DotNetProvider\Npgsql.dll</HintPath>
+      <HintPath>..\Assemblies\Npgsql.dll</HintPath>
     </Reference>
     <Reference Include="Oracle.DataAccess, Version=2.111.6.20, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=x86" />
     <Reference Include="System" />
@@ -123,9 +88,8 @@
     <Reference Include="System.Data.OracleClient" />
     <Reference Include="System.Data.Services" />
     <Reference Include="System.Data.Services.Client" />
-    <Reference Include="System.Data.SQLite, Version=1.0.66.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=x86">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Library.DataProvider\System.Data.SQLite.DLL</HintPath>
+    <Reference Include="System.Data.SQLite">
+      <HintPath>..\Assemblies\System.Data.SQLite.DLL</HintPath>
     </Reference>
     <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
@@ -151,7 +115,6 @@
     <Compile Include="DataType.cs" />
     <Compile Include="DB2DataTypeProviderTest.cs" />
     <Compile Include="DB2Test.cs" />
-    <Compile Include="DynamicData\DataModelProviderTest.cs" />
     <Compile Include="FirebirdDataTypeTest.cs" />
     <Compile Include="FirebirdProcedureTest.cs" />
     <Compile Include="FirebirdTest.cs" />
@@ -222,6 +185,42 @@
     <EmbeddedResource Include="Resources\8.bmp" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ALinq.Access\ALinq.Access.csproj">
+      <Project>{4f75b64b-272f-4980-bf0d-f9c4547eee01}</Project>
+      <Name>ALinq.Access</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ALinq.DB2\ALinq.DB2.csproj">
+      <Project>{56454bbb-3936-4934-bd15-b817cf780f68}</Project>
+      <Name>ALinq.DB2</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ALinq.EffiProz\ALinq.EffiProz.csproj">
+      <Project>{b9b25dc9-9ccd-45ff-b5d6-ad7a04efe0cc}</Project>
+      <Name>ALinq.EffiProz</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ALinq.Firebird\ALinq.Firebird.csproj">
+      <Project>{ba4accd2-56d1-4929-ae72-ed2e41aa4511}</Project>
+      <Name>ALinq.Firebird</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ALinq.MySQL\ALinq.MySQL.csproj">
+      <Project>{19ca27cc-d798-43fc-9bf5-dfae28287a37}</Project>
+      <Name>ALinq.MySQL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ALinq.OdpOracle\ALinq.OdpOracle.csproj">
+      <Project>{0921ca6d-32f3-46b2-92c2-9d46794a035f}</Project>
+      <Name>ALinq.OdpOracle</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ALinq.Orcale\ALinq.Oracle.csproj">
+      <Project>{12f17b3c-0ee9-48c2-9d22-b42dbef2f16d}</Project>
+      <Name>ALinq.Oracle</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ALinq.PostgreSQL\ALinq.PostgreSQL.csproj">
+      <Project>{0729766c-7d6d-46ff-9dc7-bd5356296bdb}</Project>
+      <Name>ALinq.PostgreSQL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ALinq.SqlLite\ALinq.SQLite.csproj">
+      <Project>{fc4950ee-b6ce-421c-acd1-14414aed0e77}</Project>
+      <Name>ALinq.SQLite</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Northwind\Northwind.csproj">
       <Project>{EB362F8A-2604-4FC2-BBF0-72BFA6905C83}</Project>
       <Name>Northwind</Name>

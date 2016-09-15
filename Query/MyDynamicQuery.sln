@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{5BC41CF5-F498-4738-8D9D-83EE284BEFFE}"
+	ProjectSection(SolutionItems) = preProject
+		DynamicQuery.vsmdi = DynamicQuery.vsmdi
+		Local.testsettings = Local.testsettings
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DynamicQuery", "DynamicQuery.csproj", "{AEC0FD62-D128-4A23-ABC3-60E78F5394F9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FullTest", "..\QueryTest\FullTest.csproj", "{404E67EC-F620-41C3-9052-F60C091DDD1D}"
+EndProject
+Global
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = DynamicQuery.vsmdi
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		NET35|Any CPU = NET35|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AEC0FD62-D128-4A23-ABC3-60E78F5394F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AEC0FD62-D128-4A23-ABC3-60E78F5394F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AEC0FD62-D128-4A23-ABC3-60E78F5394F9}.NET35|Any CPU.ActiveCfg = NET35|Any CPU
+		{AEC0FD62-D128-4A23-ABC3-60E78F5394F9}.NET35|Any CPU.Build.0 = NET35|Any CPU
+		{AEC0FD62-D128-4A23-ABC3-60E78F5394F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AEC0FD62-D128-4A23-ABC3-60E78F5394F9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{404E67EC-F620-41C3-9052-F60C091DDD1D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{404E67EC-F620-41C3-9052-F60C091DDD1D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{404E67EC-F620-41C3-9052-F60C091DDD1D}.NET35|Any CPU.ActiveCfg = NET35|Any CPU
+		{404E67EC-F620-41C3-9052-F60C091DDD1D}.NET35|Any CPU.Build.0 = NET35|Any CPU
+		{404E67EC-F620-41C3-9052-F60C091DDD1D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{404E67EC-F620-41C3-9052-F60C091DDD1D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(SpecExplorer.ActivityCompletionStatus) = preSolution
+		SpecExplorer.ActivityCompletionStatus = TestExisting: ;ModelFromScratch: 
+	EndGlobalSection
+EndGlobal

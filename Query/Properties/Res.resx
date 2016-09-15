@@ -1,0 +1,540 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AmbiguousConstructorInvocation" xml:space="preserve">
+    <value>Ambiguous invocation of '{0}' constructor</value>
+  </data>
+  <data name="AmbiguousIndexerInvocation" xml:space="preserve">
+    <value>Ambiguous invocation of indexer in type '{0}'</value>
+  </data>
+  <data name="AmbiguousMethodInvocation" xml:space="preserve">
+    <value>Ambiguous invocation of method '{0}' in type '{1}'</value>
+  </data>
+  <data name="BetweenLimitsCannotBeUntypedNulls" xml:space="preserve">
+    <value>The upper and lower limits of the BETWEEN expression cannot be untyped nulls.</value>
+  </data>
+  <data name="BetweenLimitsTypesAreNotCompatible" xml:space="preserve">
+    <value>The BETWEEN lower limit type '{0}' is not compatible with the upper limit type '{1}'.</value>
+  </data>
+  <data name="BetweenLimitsTypesAreNotOrderComparable" xml:space="preserve">
+    <value>The BETWEEN lower limit type '{0}' is not order-comparable with the upper limit type '{1}'.</value>
+  </data>
+  <data name="BetweenValueIsNotOrderComparable" xml:space="preserve">
+    <value>The BETWEEN value type '{0}' is not order-comparable with the limits common type '{1}'.</value>
+  </data>
+  <data name="BothTypesConvertToOther" xml:space="preserve">
+    <value>Both of the types '{0}' and '{1}' convert to the other.</value>
+  </data>
+  <data name="CannotConvertNumericLiteral" xml:space="preserve">
+    <value>Cannot convert literal '{0}' to '{1}'. Numeric literal specification is not valid.</value>
+  </data>
+  <data name="CannotConvertValue" xml:space="preserve">
+    <value>A value of type '{0}' cannot be converted to type '{1}'</value>
+  </data>
+  <data name="CannotCreateEmptyMultiset" xml:space="preserve">
+    <value>Cannot create an empty multiset.</value>
+  </data>
+  <data name="CannotCreateMultisetofNulls" xml:space="preserve">
+    <value>A multiset of untyped NULLs is not valid.</value>
+  </data>
+  <data name="CannotIndexMultiDimArray" xml:space="preserve">
+    <value>Indexing of multi-dimensional arrays is not supported</value>
+  </data>
+  <data name="CannotInstantiateAbstractType" xml:space="preserve">
+    <value>'{0}' cannot be instantiated because it is defined as an abstract type.</value>
+  </data>
+  <data name="CannotResolveNameToTypeOrFunction" xml:space="preserve">
+    <value>'{0}' cannot be resolved into a valid type or function.</value>
+  </data>
+  <data name="CannotUseSystemNamespaceAsAlias" xml:space="preserve">
+    <value>'{0}' is a system namespace and cannot be used as an Alias. Use some other Alias.</value>
+  </data>
+  <data name="CheckArgumentContainsNullFailed" xml:space="preserve">
+    <value>Argument '{0}' is not valid.  The set contains a null value.</value>
+  </data>
+  <data name="CloseBracketOrCommaExpected" xml:space="preserve">
+    <value>']' or ',' expected</value>
+  </data>
+  <data name="CloseParenExpected" xml:space="preserve">
+    <value>')' expected</value>
+  </data>
+  <data name="ColonExpected" xml:space="preserve">
+    <value>':' expected</value>
+  </data>
+  <data name="Cqt_Cast_InvalidCast" xml:space="preserve">
+    <value>The requested cast is not allowed: from type '{0}' to type '{1}'.</value>
+  </data>
+  <data name="Cqt_CommandTree_InvalidParameterName" xml:space="preserve">
+    <value>The specified parameter name is not valid: '{0}'.</value>
+  </data>
+  <data name="Cqt_Limit_ConstantOrParameterRefRequired" xml:space="preserve">
+    <value>Limit must be a ConstantExpression or a ParameterExpression.</value>
+  </data>
+  <data name="Cqt_Limit_IntegerRequired" xml:space="preserve">
+    <value>Limit must have an integer ResultType.</value>
+  </data>
+  <data name="Cqt_Limit_NonNegativeLimitRequired" xml:space="preserve">
+    <value>Limit must have a non-negative value.</value>
+  </data>
+  <data name="Cqt_Metadata_EntitySetEntityContainerNull" xml:space="preserve">
+    <value>The specified EntitySet is not valid because its EntityContainer property has a value of null.</value>
+  </data>
+  <data name="Cqt_Not_BooleanArgumentRequired" xml:space="preserve">
+    <value>DbNotExpression requires an argument with a Boolean type.</value>
+  </data>
+  <data name="Cqt_Or_BooleanArgumentsRequired" xml:space="preserve">
+    <value>DbOrExpression requires arguments with a common Boolean type.</value>
+  </data>
+  <data name="CycleInTypeHierarchy" xml:space="preserve">
+    <value>A cycle was detected in the type hierarchy of '{0}'.</value>
+  </data>
+  <data name="DigitExpected" xml:space="preserve">
+    <value>Digit expected</value>
+  </data>
+  <data name="ELinq_MemberMustBeIQueryable" xml:space="preserve">
+    <value>Type of the member '{0}' on the type '{1}' is not implement the IQueryable interface.</value>
+  </data>
+  <data name="ExpressionExpected" xml:space="preserve">
+    <value>Expression expected</value>
+  </data>
+  <data name="ExpressionMustBeCollection" xml:space="preserve">
+    <value>The specified expression must be of CollectionType.</value>
+  </data>
+  <data name="FirstExprMustBeBool" xml:space="preserve">
+    <value>The first expression must be of type 'Boolean'.</value>
+  </data>
+  <data name="GenericSyntaxError" xml:space="preserve">
+    <value>The query syntax is not valid.</value>
+  </data>
+  <data name="HavingRequiresGroupClause" xml:space="preserve">
+    <value>The HAVING clause must be preceded by a GROUP BY clause.</value>
+  </data>
+  <data name="IncompatibleOperand" xml:space="preserve">
+    <value>Operator '{0}' incompatible with operand type '{1}'</value>
+  </data>
+  <data name="IncompatibleOperands" xml:space="preserve">
+    <value>Operator '{0}' incompatible with operand types '{1}' and '{2}'</value>
+  </data>
+  <data name="InExpressionMustBeCollection" xml:space="preserve">
+    <value>The In clause requires a CollectionType expression. </value>
+  </data>
+  <data name="InvalidCharacter" xml:space="preserve">
+    <value>Syntax error '{0}'</value>
+  </data>
+  <data name="InvalidDateTime" xml:space="preserve">
+    <value>DateTime '{0}' is not valid in DateTime literal '{1}'.</value>
+  </data>
+  <data name="InvalidGroupIdentifierReference" xml:space="preserve">
+    <value>The identifier '{0}' is not valid because it is not contained either in an aggregate function or in the GROUP BY clause.</value>
+  </data>
+  <data name="InvalidIndex" xml:space="preserve">
+    <value>Array index must be an integer expression</value>
+  </data>
+  <data name="InvalidIntegerLiteral" xml:space="preserve">
+    <value>Invalid integer literal '{0}'</value>
+  </data>
+  <data name="InvalidParameterFormat" xml:space="preserve">
+    <value>The command parameter syntax '@{0}' is not valid.</value>
+  </data>
+  <data name="MethodIsVoid" xml:space="preserve">
+    <value>Method '{0}' in type '{1}' does not return a value</value>
+  </data>
+  <data name="MethodsAreInaccessible" xml:space="preserve">
+    <value>Methods on type '{0}' are not accessible</value>
+  </data>
+  <data name="MultisetElemsAreNotTypeCompatible" xml:space="preserve">
+    <value>Multiset element types are incompatible.</value>
+  </data>
+  <data name="NeitherTypeConvertsToOther" xml:space="preserve">
+    <value>Neither of the types '{0}' and '{1}' converts to the other.</value>
+  </data>
+  <data name="NoApplicableAggregate" xml:space="preserve">
+    <value>No applicable aggregate method '{0}' exists</value>
+  </data>
+  <data name="NoApplicableIndexer" xml:space="preserve">
+    <value>No applicable indexer exists in type '{0}'</value>
+  </data>
+  <data name="NoApplicableMethod" xml:space="preserve">
+    <value>No applicable method '{0}' exists in type '{1}'</value>
+  </data>
+  <data name="NoMatchingConstructor" xml:space="preserve">
+    <value>No matching constructor in type '{0}'</value>
+  </data>
+  <data name="NoMatchingMethod" xml:space="preserve">
+    <value>No matching method with '{0}' in type'.</value>
+  </data>
+  <data name="OpenBracketExpected" xml:space="preserve">
+    <value>'[' expected</value>
+  </data>
+  <data name="OpenParenExpected" xml:space="preserve">
+    <value>'(' expected</value>
+  </data>
+  <data name="ParameterOrMultiSetExpected" xml:space="preserve">
+    <value>Command parameter or multiset expected.</value>
+  </data>
+  <data name="ParseExceptionFormat" xml:space="preserve">
+    <value>{0} (at index {1}).</value>
+  </data>
+  <data name="SemicolonExpected" xml:space="preserve">
+    <value>;' expected</value>
+  </data>
+  <data name="TokenExpected" xml:space="preserve">
+    <value>The query syntax is not valid, {0} expected.</value>
+  </data>
+  <data name="TypeHasNoNullableForm" xml:space="preserve">
+    <value>Type '{0}' has no nullable form</value>
+  </data>
+  <data name="TypeNotSupported" xml:space="preserve">
+    <value>The type '{0}' is not supported.</value>
+  </data>
+  <data name="UnknownPropertyOrField" xml:space="preserve">
+    <value>No property or field '{0}' exists in type '{1}'.</value>
+  </data>
+  <data name="UnknownType" xml:space="preserve">
+    <value>Unknown type '{0}'</value>
+  </data>
+  <data name="UnterminatedDateTimeLiteral" xml:space="preserve">
+    <value>Unterminated datetime literal.</value>
+  </data>
+  <data name="UnterminatedStringLiteral" xml:space="preserve">
+    <value>Unterminated string literal.</value>
+  </data>
+  <data name="ArgsIncompatibleWithLambda" xml:space="preserve">
+    <value>Argument list incompatible with lambda expression</value>
+  </data>
+  <data name="CloseCurlyBraceOrCommaExpected" xml:space="preserve">
+    <value>'}' or ',' expected</value>
+  </data>
+  <data name="CloseParenOrCommaExpected" xml:space="preserve">
+    <value>')' or ',' expected</value>
+  </data>
+  <data name="CloseParenOrOperatorExpected" xml:space="preserve">
+    <value>')' or operator expected</value>
+  </data>
+  <data name="DuplicateIdentifier" xml:space="preserve">
+    <value>The identifier '{0}' was defined more than once</value>
+  </data>
+  <data name="IdentifierExpected" xml:space="preserve">
+    <value>Identifier expected</value>
+  </data>
+  <data name="IifRequiresThreeArgs" xml:space="preserve">
+    <value>The 'iif' function requires three arguments</value>
+  </data>
+  <data name="InvalidRealLiteral" xml:space="preserve">
+    <value>Invalid real literal '{0}'</value>
+  </data>
+  <data name="MissingAsClause" xml:space="preserve">
+    <value>Expression is missing an 'as' clause</value>
+  </data>
+  <data name="Token1OrToken2Expected" xml:space="preserve">
+    <value>The query syntax is not valid, {0} or {1} expected.</value>
+  </data>
+  <data name="AliasNameAlreadyUsed" xml:space="preserve">
+    <value>The alias '{0}' was already used.</value>
+  </data>
+  <data name="CouldNotResolveIdentifier" xml:space="preserve">
+    <value>'{0}' could not be resolved in the current scope or context. Make sure that all referenced variables are in scope, that namespaces are referenced correctly.</value>
+  </data>
+  <data name="Cqt_Constant_InvalidConstantType" xml:space="preserve">
+    <value>Only enumeration or primitive types may be used as constant value types. DbConstantExpression cannot be created using an instance of type '{0}'.</value>
+  </data>
+  <data name="CtxWhereClause" xml:space="preserve">
+    <value>WHERE predicate</value>
+  </data>
+  <data name="ELinq_MemberCannotBeNull" xml:space="preserve">
+    <value>The member '{0}' on the type '{1}' can not be null.</value>
+  </data>
+  <data name="ELinq_NotPropertyOrField" xml:space="preserve">
+    <value>The member '{0}' is not a property or a field.</value>
+  </data>
+  <data name="ErrorContextWithoutPredicate" xml:space="preserve">
+    <value>Near line {0}, column {1}.</value>
+  </data>
+  <data name="ExpressionCannotBeNull" xml:space="preserve">
+    <value>The specified expression cannot be NULL.</value>
+  </data>
+  <data name="ExpressionTypeMustBeBoolean" xml:space="preserve">
+    <value>The specified expression must be of Boolean type.</value>
+  </data>
+  <data name="ExpressionTypeMustBeQueryable" xml:space="preserve">
+    <value>The specified expression must be of IQueryable type.</value>
+  </data>
+  <data name="InvalidSelectValueList" xml:space="preserve">
+    <value>SELECT VALUE can have only one expression in the projection list.</value>
+  </data>
+  <data name="LocalizedCollection" xml:space="preserve">
+    <value>collection</value>
+  </data>
+  <data name="LocalizedColumn" xml:space="preserve">
+    <value>column</value>
+  </data>
+  <data name="LocalizedComplex" xml:space="preserve">
+    <value>complex</value>
+  </data>
+  <data name="LocalizedDot" xml:space="preserve">
+    <value>.</value>
+  </data>
+  <data name="LocalizedEntity" xml:space="preserve">
+    <value>entity</value>
+  </data>
+  <data name="LocalizedEntityContainerExpression" xml:space="preserve">
+    <value>entity container</value>
+  </data>
+  <data name="LocalizedEnumMember" xml:space="preserve">
+    <value>enum member</value>
+  </data>
+  <data name="LocalizedFunction" xml:space="preserve">
+    <value>function</value>
+  </data>
+  <data name="LocalizedInlineFunction" xml:space="preserve">
+    <value>query inline function</value>
+  </data>
+  <data name="LocalizedKeyword" xml:space="preserve">
+    <value>keyword</value>
+  </data>
+  <data name="LocalizedLeft" xml:space="preserve">
+    <value>left</value>
+  </data>
+  <data name="LocalizedLine" xml:space="preserve">
+    <value>line</value>
+  </data>
+  <data name="LocalizedMetadataMemberExpression" xml:space="preserve">
+    <value>namespace, type or function</value>
+  </data>
+  <data name="LocalizedNamespace" xml:space="preserve">
+    <value>namespace</value>
+  </data>
+  <data name="LocalizedNear" xml:space="preserve">
+    <value>Near</value>
+  </data>
+  <data name="LocalizedPrimitive" xml:space="preserve">
+    <value>primitive</value>
+  </data>
+  <data name="LocalizedReference" xml:space="preserve">
+    <value>reference</value>
+  </data>
+  <data name="LocalizedRight" xml:space="preserve">
+    <value>right</value>
+  </data>
+  <data name="LocalizedRow" xml:space="preserve">
+    <value>row</value>
+  </data>
+  <data name="LocalizedTerm" xml:space="preserve">
+    <value>term</value>
+  </data>
+  <data name="LocalizedType" xml:space="preserve">
+    <value>type</value>
+  </data>
+  <data name="LocalizedValueExpression" xml:space="preserve">
+    <value>value expression</value>
+  </data>
+  <data name="MemberTypeMismatch" xml:space="preserve">
+    <value>{0} member '{1}' type must be the same as {2} member '{3}' type.</value>
+  </data>
+  <data name="ParameterWasNotDefined" xml:space="preserve">
+    <value>The command parameter '{0}' was not defined.</value>
+  </data>
+  <data name="ADP_KeywordNotSupported" xml:space="preserve">
+    <value>Keyword not supported: '{0}'.</value>
+  </data>
+  <data name="CannotResolveNameToType" xml:space="preserve">
+    <value>'{0}' cannot be resolved into a valid type. Are you reference the corrected namespace?</value>
+  </data>
+  <data name="KeywordExpected" xml:space="preserve">
+    <value>The query syntax is not valid, '{0}' expected.</value>
+  </data>
+  <data name="TypeNameExpected" xml:space="preserve">
+    <value>The query syntax is not valid, Type Name expected.</value>
+  </data>
+  <data name="ArgumentTypesAreIncompatible" xml:space="preserve">
+    <value>The argument types '{0}' and '{1}' are incompatible for this operation.</value>
+  </data>
+  <data name="CanNotFindMethod" xml:space="preserve">
+    <value>Can not find a method '{0}({1})' on the type '{2}'.</value>
+  </data>
+  <data name="NoCanonicalAggrFunctionOverloadMatch" xml:space="preserve">
+    <value>No overload of canonical aggregate function '{0}' is compatible with the argument types in '{1}'. </value>
+  </data>
+  <data name="NoCanonicalFunctionOverloadMatch" xml:space="preserve">
+    <value>No overload of canonical function '{0}' is compatible with the argument types in '{1}'. </value>
+  </data>
+  <data name="ErrorContextWithTerm" xml:space="preserve">
+    <value>Near term '{0}', line {1}, column {2}.</value>
+  </data>
+  <data name="CanNotFindConstructor" xml:space="preserve">
+    <value>Can not find a constructor '({1})' on type '{0}'.</value>
+  </data>
+  <data name="NoPublicPropertyOrField" xml:space="preserve">
+    <value>No public property or field '{0}' in type '{1}'.</value>
+  </data>
+  <data name="PropertyNoSetter" xml:space="preserve">
+    <value>Can not find setter on property '{0}' on type '{1}'.</value>
+  </data>
+  <data name="RequirePublicField" xml:space="preserve">
+    <value>Require public field '{0}' on type '{1}'.</value>
+  </data>
+  <data name="RequirePublicPropertySetter" xml:space="preserve">
+    <value>Require public setter on property '{0}' on type '{1}'.</value>
+  </data>
+  <data name="NotMethodOrType" xml:space="preserve">
+    <value>'{0}({1})' is not a predefine method or member of '{2}' or type.</value>
+  </data>
+  <data name="TopAndLimitCannotCoexist" xml:space="preserve">
+    <value>The TOP and LIMIT sub-clauses cannot be used together in the same query expression.</value>
+  </data>
+  <data name="TopAndSkipCannotCoexist" xml:space="preserve">
+    <value>The TOP and SKIP sub-clauses cannot be used together in the same query expression. Use LIMIT instead of TOP.</value>
+  </data>
+  <data name="PlaceholderExpressionMustBeConstant" xml:space="preserve">
+    <value>The {0} expression must be a command parameter or an integral numeric literal.</value>
+  </data>
+  <data name="ParameterNameRequried" xml:space="preserve">
+    <value>Parameter name is empty or invalid. Parameter name can only contain letters, numbers, and underscores.</value>
+  </data>
+  <data name="ObjectParameter_InvalidParameterType" xml:space="preserve">
+    <value>The specified parameter type '{0}' is not valid. Only scalar types(such as System.Int32, System.Decimal, System.DateTime), System.Guid, Expression and IQueryable are supported.</value>
+  </data>
+  <data name="AmbiguousTypeReference" xml:space="preserve">
+    <value>Ambiguous type reference, '{0}' is defined in both the '{1}' namespace and the '{2}' namespace.</value>
+  </data>
+  <data name="Cqt_Constant_InvalidType" xml:space="preserve">
+    <value>The specified value is not an instance of a valid constant type.</value>
+  </data>
+  <data name="LikeArgMustBeConstantOrParameter" xml:space="preserve">
+    <value>LIKE argument must be a command parameter or an string literal.</value>
+  </data>
+  <data name="LikeArgMustBeNotEmpty" xml:space="preserve">
+    <value>LIKE argument can not be null or Empty.</value>
+  </data>
+  <data name="LikeArgMustBeStringType" xml:space="preserve">
+    <value>LIKE argument must be of string type.</value>
+  </data>
+  <data name="TopAndTakeCannotCoexist" xml:space="preserve">
+    <value>The TOP and TAKE sub-clauses cannot be used together in the same query expression.</value>
+  </data>
+  <data name="ObjectParameterCollection_DuplicateParameterName" xml:space="preserve">
+    <value>A parameter named '{0}' already exists in the parameter collection. Parameter names must be unique in the parameter collection.</value>
+  </data>
+  <data name="InvalidQueryCast" xml:space="preserve">
+    <value>Unable to cast the query element type '{0}' to type '{1}'.</value>
+  </data>
+  <data name="UnterminatedBinaryLiteral" xml:space="preserve">
+    <value>Unterminated binary literal.</value>
+  </data>
+</root>

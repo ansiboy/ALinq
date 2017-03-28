@@ -39,7 +39,7 @@ namespace ALinq.MySQL
             }
             DbConnection conn;
             if (connection is string)
-                conn = new MySqlConnection((string)connection);
+                conn = new MySQL.Connection((string)connection);
             else
                 conn = ((DbConnection)connection);
 
@@ -52,15 +52,6 @@ namespace ALinq.MySQL
                 throw SqlClient.Error.CouldNotDetermineCatalogName();
 
             Initialize(dataServices, conn);
-            //var conn = new Connection((MySqlConnection)connection);
-            //Debug.Assert(dataServices is ReflectObject);
-            //InvokeIProviderMethod("Initialize", new[] { ((ReflectObject)dataServices).Source, conn });
-            //services = dataServices;
-            //this.dbName = (string)GetField("dbName");
-
-            //conManager = new MySqlConnectionManager(this, conn, 100);
-            //var type = typeof(DbDataReader);
-            //this.readerCompiler = new ObjectReaderCompiler(type, this.services);
         }
 
         private string GetConnectionString(string dataBaseName)
@@ -74,10 +65,10 @@ namespace ALinq.MySQL
             CheckDispose();
             query = Funcletizer.Funcletize(query);
             var converter = new MySqlQueryConverter(services, typeProvider, translator, sqlFactory)
-                                {
-                                    ConverterStrategy = ConverterStrategy.CanOutputFromInsert | ConverterStrategy.CanUseJoinOn |
+            {
+                ConverterStrategy = ConverterStrategy.CanOutputFromInsert | ConverterStrategy.CanUseJoinOn |
                                                         ConverterStrategy.CanUseOuterApply | ConverterStrategy.SkipWithRowNumber
-                                };
+            };
             SqlNode node = converter.ConvertOuter(query);
             var queryInfos = BuildQuery(GetResultShape(query), GetResultType(query), node, null, annotations);
             var formatter = new MySqlFormatter(this);
@@ -189,7 +180,7 @@ namespace ALinq.MySQL
                                 {
                                     info = TypeSystem.FindSequenceMethod("SingleOrDefault", sequence);
                                 }
-                            Label_01DE:
+                                Label_01DE:
                                 if (info != null)
                                 {
                                     try
@@ -514,15 +505,15 @@ namespace ALinq.MySQL
                             goto Label_00AA;
                     }
                     obj2 = lastResult;
-                Label_00AA:
+                    Label_00AA:
                     if (info.Parameter.SqlType.IsRuntimeOnlyType && (obj2 == null))
                         parameter.Value = DBNull.Value;
                     else
                         typeProvider.InitializeParameter(info.Parameter.SqlType, parameter, obj2);
                     goto Label_00DC;
-                Label_00C4:
+                    Label_00C4:
                     typeProvider.InitializeParameter(info.Parameter.SqlType, parameter, null);
-                Label_00DC:
+                    Label_00DC:
                     cmd.Parameters.Add(parameter);
                 }
             }

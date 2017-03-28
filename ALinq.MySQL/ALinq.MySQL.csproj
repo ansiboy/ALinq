@@ -92,7 +92,9 @@
     <Compile Include="MySqlDataType.cs" />
     <Compile Include="MySqlFactory.cs" />
     <Compile Include="MySqlLicenseProvider.cs" />
-    <Compile Include="Connection.cs" />
+    <Compile Include="Connection.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="MySqlBuilder.cs" />
     <Compile Include="MySqlFormatter.cs" />
     <Compile Include="MySqlProvider.cs" />

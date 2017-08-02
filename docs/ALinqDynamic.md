@@ -1596,19 +1596,1278 @@ then_expression：任何返回集合的有效查询表达式。
 
 如果 when_expression 取值为 true，则结果为对应的 then-expression。如果任何 WHEN 条件均未得以满足，将求出 else-expression 的值。然而，如果没有 else-expression，则结果为空值。 
 
-
 ### 五. 查询运算符
+#### 1. FROM查询
+**语法**
+```sql
+FROM expression [ ,...n ] as C
+```
+**参数**
 
-### 六. 引用运算符
+expression
 
-### 七. 集合运算符
+任何可生成集合以用作 SELECT 语句中的源的有效查询表达式。
 
-### 八. 类型运算符
+**注意**
 
-### 九. 其他运算符
+FROM子句是一个或多个 FROM 子句项的逗号分隔列表。FROM子句可用来为 SELECT 语句指定一个或多个数据源。
 
-### 十. 扩展查询方法
+**1） 单个数据源**
+
+FROM子句的最简单形式是单个查询表达式，标识用作 SELECT 语句中的源的集合和别名，如下例所示：
+
+```cs
+var esql = @"select p from Products as p";
+var q = db.CreateQuery<Product>(esql);
+```
+其中 Proudcts 中 db 的属性。除了例用属性，你还可以使用类名作为数据源。例如：
+```cs
+var esql = @"select p from NorthwinDemo.Product as p";
+var q = db.CreateQuery<Product>(esql);
+```
+其中 Product 为实体类，而 NorthwindDemo 为实体类 Product 的命名空间。由于 db 的类名为 NorthwindDemo.NorthwindDataContext，命名空间与实体类的命名空间相同，因此，可以简写为：
+```cs
+var esql = @"select p from Product as p";
+var q = db.CreateQuery<Product>(esql);
+```
+
+**2） 多个数据源**
+
+```cs
+var esql = @"select p from Product as p, Orders as o";
+var q = db.CreateQuery<Product>(esql);
+```
+
+**3） 内联接**
+
+INNER JOIN 生成两个集合的约束笛卡儿积，
+语法：FROM C AS c [INNER] JOIN D AS d ON e（其中 [INNER] 表示 INNER 关键字可以省略）。
+
+**示例一**
+```cs
+var esql = @"select o.OrderId, d.UnitPrice 
+             from Orders as o Inner Join 
+             OrderDetails as d on o.OrderId == d.OrderId";
+var q = db.CreateQuery(esql);
+```
+**示例二**
+```cs
+var esql = @"select o.OrderId, d.ProductId, p.UnitPrice 
+                from Orders as o 
+                    Inner Join OrderDetails as d on o.OrderId == d.OrderId
+                    Inner Join Products as p on d.ProductId == p.ProductId";
+var q = db.CreateQuery(esql);
+```
+
+**4） 左连接**
+
+**语法**
+
+```
+FROM C AS c LEFT JOIN D AS d ON e
+```
+
+**示例一**
+```cs
+var esql = @"select o.OrderId, d.UnitPrice 
+             from Orders as o 
+                  left join OrderDetails as d on o.OrderId == d.OrderId";
+var q = db.CreateQuery(esql);
+```
+**示例二**
+```cs
+var esql = @"select o.OrderId 
+             from Orders as o 
+                  left join OrderDetails as d on o.OrderId == d.OrderId
+                  left join Products as p on d.ProductId == p.ProductId";
+var q = db.CreateQuery(esql);
+```
+**示例三**
+```cs
+var esql = @"select o.OrderId, c.CategoryId, p.ProductId 
+             from Orders as o 
+                  left join OrderDetails as d on o.OrderId == d.OrderId
+                  left join Products as p on d.ProductId == p.ProductId
+                  left join Categories as c on p.CategoryId == c.CategoryId";
+var q = db.CreateQuery(esql);
+```
+
+**5） 嵌套查询**
+
+**示例**
+```cs
+var esql = @"select od.o.OrderID as OrderID
+                from ( select o, d 
+                       from Orders as o 
+                       inner join OrderDetails as d on o.OrderID = d.OrderID ) as od";
+var q = db.CreateQuery(esql);
+```
+
+#### 2. GROUP BY查询
+
+指定由查询 (SELECT) 表达式返回的对象要分入的组。 
+
+**语法**
+```
+[ GROUP BY aliasedExpression [ ,...n ] ]
+```
+**参数**
+
+aliasedExpression
+
+要对其执行分组的任何有效查询表达式。expression可以是属性或者是引用 FROM 子句所返回的属性的非聚合表达式。GROUP BY 子句中的每一个表达式的求值结果必须为可比较相等性的类型。这些类型通常为标量基元类型，如数字、字符串和日期。不可按集合分组。
+
+**注释**
+
+指定 GROUP BY 子句时，无论是显式指定还是隐式指定（例如，通过查询中的 HAVING 子句指定），当前作用域都将隐藏，并且将引入新的作用域。
+
+SELECT 子句、HAVING 子句和 ORDER BY 子句将无法再引用 FROM 子句中指定的元素名。您只能引用分组表达式本身。为此，可以为每个分组表达式指定新的名称（别名）。如果没有为分组表达式指定别名，实体 SQL 将尝试使用别名生成规则来生成别名，如下例中所示。
+```sql
+SELECT g1, g2, ...gn FROM c as c1
+GROUP BY e1 as g1, e2 as g2, ...en as gn
+```
+GROUP BY 子句中的表达式无法引用先前在相同 GROUP BY 子句中定义的名称。
+
+**示例一**
+```cs
+var esql = "select SID from Products as p group by p.SupplierID as SID";
+var q = db.CreateQuery<IDataRecord>(esql);
+```
+**示例二**
+```cs
+var esql = "select SupplierID from Products as p group by p.SupplierID";
+var q = db.CreateQuery<IDataRecord>(esql);
+```
+
+除了分组名称外，还可以在 SELECT 子句、HAVING 子句和 ORDER BY 子句中指定聚合。聚合中包含的表达式针对组中的每一个元素进行求值。聚合运算符缩减所有这些表达式的值（通常，但非总是，缩减为单个值）。聚合表达式可以引用父作用域中可见的原始元素名，或者引用 GROUP BY 子句本身引入的任何新名称。虽然聚合出现在 SELECT 子句、HAVING 子句和 ORDER BY 子句中，但是实际上它们是在与分组表达式相同的作用域中求值的，如下面的示例中所示。
+
+**示例一**
+```cs
+var esql = @"select ProductId, sum(o.Quantity) as SumQuantity  
+             from OrderDetails as o 
+             group by o.ProductId";
+var q = db.CreateQuery(esql);
+```
+
+**示例二**
+```cs
+var esql = @"select CategoryID, SupplierID, Count()  
+            from Products as p 
+            group by p.CategoryID, p.SupplierID";
+var db.CreateQuery<IDataRecord>(esql).Execute();
+```
+
+**示例三**
+```cs
+select OrderID
+from ( select o, d 
+       from Orders as o 
+            inner join OrderDetails as d on o.OrderID = d.OrderID ) as od
+group by od.o.OrderID
+```
+
+#### 3. GroupPartition查询
+
+返回从聚合与之相关的当前组分区提取的参数值集合。GroupPartition聚合是基于组的聚合，没有基于集合的形式。
+
+**语法**
+```
+GROUPPARTITION( [ALL|DISTINCT] expression )
+```
+
+**参数**
+
+expression
+
+任何 实体 SQL 表达式。
+
+**注释**
+
+**示例一**
+
+下面的查询，将产品按 CategoryId 进行分组，同时获取分组的产品。
+
+```cs
+var esql = @"select CategoryID, GroupPartition(p) as Products
+                from Products as p 
+                group by p.CategoryID";
+var items = db.CreateQuery<IDataRecord>(esql);
+foreach (var item in items)
+{
+    foreach (Product p in (IEnumerable<Product>)item["Products"])
+    {
+        Console.WriteLine(p.ProductName);
+    }
+}
+```
+
+**示例二**
+
+下面的查询，将产品按 CategoryId 进行分组，并计算每组产品的  UnitPrice 的总和。
+```cs
+var esql = @"select CategoryID, sum(GroupPartition(p.UnitPrice)) as PriceSum
+             from Products as p 
+             group by p.CategoryID";
+var items = db.CreateQuery<IDataRecord>(esql);
+foreach (var item in items)
+{
+    Console.WriteLine(item["PriceSum"]);
+}
+```
+
+下面的 ESQL 以上面的语句语义上是相同的。但是建议采用上面的语句，因为它生成的 SQL 语句只有一条，具有更好的效率。
+```cs
+select CategoryID, GroupPartition(sum(p.UnitPrice)) as PriceSum
+from Products as p 
+group by p.CategoryID
+```
+
+#### 4. HAVING查询
+
+指定组或聚合的搜索条件。
+
+**语法**
+```
+[ HAVING search_condition ]
+```
+
+**参数**
+
+search_condition
+
+指定组或聚合应满足的搜索条件。
+
+**注释**
+
+HAVING 子句用于对分组结果指定附加筛选条件。HAVING 子句与 WHERE 子句的工作方式类似，只是它应用在 GROUP BY 操作之后。这意味着 HAVING 子句只能引用分组别名和聚合，如下面的示例所示。
+
+**示例一**
+```cs
+select value c from Products as p 
+group by p.CategoryId as c 
+having c > 1000
+```
+
+**示例二**
+```cs
+select c from Products as p 
+group by p.CategoryId as c, p.SupplierId 
+having c > 1000
+```
+
+**示例三**
+```cs
+select value c from Products as p 
+group by p.CategoryId as c 
+having max(p.CategoryId) > 1000
+```
+
+#### 5. LIMIT查询
+
+在 SELECT 子句中使用 LIMIT 子句可执行物理分页。LIMIT 子句应放置在 SELECT 子句的最后面。
+
+**语法**
+```
+[ LIMIT n ]
+or
+[TAKE n]
+```
+
+**参数**
+
+n：将选择的项的数量。
+
+**注意**
+
+LIMIT与TAKE是等效的，并且与TOP 不能同时出现在同一条 SELECT 查询子句中。
+
+**示例**
+```sql
+select e from Employees as e limit 10
+```
+
+或
+
+```sql
+select e from Employees as e take 10
+```
+
+#### 6. ORDER BY查询
+
+指定用于 SELECT 语句所返回的对象的排序顺序。
+
+**语法**
+```
+[ ORDER BY  {order_by_expression  [ ASC | DESC ] } [ ,…n ] ]
+```
+
+**参数**
+
+order_by_expression
+
+指定作为排序依据的属性的任何有效查询表达式。可以指定多个排序表达式。ORDER BY 子句中排序表达式的顺序将决定排序后结果集的结构。
+
+*ASC*
+
+指定所指定属性中的值应按升序排序，即从最低值往最高值排序。这是默认选项。
+
+*DESC*
+
+指定所指定属性中的值应按降序排序，即从最高值往最低值排序。
+
+**注释**
+
+ORDER BY 子句在逻辑上应用于 SELECT 子句的结果。ORDER BY 子句可以使用选择列表中各项的别名来引用这些项。
+
+ORDER BY 子句也可引用当前处于作用域内的其他变量。
+
+ORDER BY 子句中的每个表达式的计算结果都必须是可按顺序比较是否不等（小于或大于，等等）的某一类型。这些类型通常为标量基元类型，如数字、字符串和日期。
+
+**示例一**
+```sql
+select e from Employees as e order by e.FirstName asc
+```
+
+与下面的语句等效
+
+```sql
+select e from Employees as e order by e.FirstName
+```
+
+**示例二**
+```sql
+select e from Employees as e order by e.FirstName desc
+```
+
+#### 7. SKIP查询
+
+在 SELECT 子句中使用 SKIP 谓词可执行物理分页
+
+**语法**
+
+```
+[ SKIP n ]
+```
+
+**参数**
+
+n：要跳过的项数。
+
+**示例一**
+```sql
+select p from Products as p skip 10
+```
+
+**示例二**
+```sql
+select p from Products as p skip 10 limit 10
+```
+
+#### 8. TOP查询
+
+指定查询结果中最多返回的记录数。
+
+**语法**
+```
+[ TOP (n) ]
+```
+**参数**
+
+n：一个数值表达式，指定要返回的行数。n可以是单个数值或单个参数。
+
+**注释**
+
+TOP 表达式必须是单个数值或单个参数，并且大于0。
+
+**示例一**
+```sql
+select top(10) p from Products as p
+```
+
+**示例二**
+```sql
+select top(@topNum) p from Products as p
+```
+
+#### 9. WHERE查询
+
+按条件筛选由查询返回的数据，WHERE 子句直接应用在 FROM 子句之后。
+
+**语法**
+```
+[ WHERE expression ]
+```
+
+**参数**
+
+expression: Boolean 类型。
+
+**注释**
+
+WHERE 子句的语义与针对 Transact-SQL 所述的语义相同。 它将源集合的元素限定为传递条件的元素，以此限制查询表达式所生成的对象。WHERE 子句直接应用在 FROM 子句之后，任何分组、排序或投影操作之前。FROM 子句中定义的所有元素名称对 WHERE 子句的表达式都是可见的。
+
+**示例**
+```sql
+select p from Products as p where p.UnitPrice > 10
+```
+
+### 六. 集合运算符
+
+运算符                 |说明
+----------------------|----------------------
+EXCEPT                |返回由 EXCEPT 操作数左侧的查询表达式返回而不由 EXCEPT 操作数右侧的查询表达式返回的任何非重复值的集合。
+[NOT] EXISTS          |确定集合是否为空。
+[NOT] IN              |
+INTERSECT             |返回 INTERSECT 操作数左右两边的两个查询表达式均返回的所有非重复值的集合。
+UNION                 |将两个或更多查询的结果组合成单个集合。
+
+#### 1. EXCEPT
+
+返回由 EXCEPT 操作数左侧的查询表达式返回而不由 EXCEPT 操作数右侧的查询表达式返回的任何非重复值的集合。 所有表达式都必须与 expression 一样属于同一类型或属于公共基类型或派生类型。
+
+**语法**
+```
+expression EXCEPT expression
+```
+
+**参数**
+
+expression
+
+返回一个集合以与从其他查询表达式返回的集合进行比较的任何有效查询表达式。
+
+**返回值**
+
+与 expression 具有相同类型或属于公共基类型或派生类型的一个集合。
+
+EXCEPT 是 实体 SQL 集运算符之一。 所有 实体 SQL 集运算符都是从左到右进行求值。 下表显示 实体 SQL 集运算符的优先级。
+
+优先级        |运算符
+-------------|---------------
+最高          |UNION 
+             |EXCEPT
+最低          |EXISTS
+
+**示例一**
+```sql
+(select p1.ProductName from Products as p1 where p1.CategoryID = 2)
+except
+(select p2.ProductName from Products as p2 where p2.CategoryID = 3)
+```
+
+**示例二**
+```sql
+(select p1 from Products as p1 where p1.CategoryID = 2)
+except
+(select p2 from Products as p2 where p2.CategoryID = 3)
+```
+
+#### 2. EXISTS
+
+确定集合是否为空。
+
+**语法**
+```
+[NOT] EXISTS (expression)
+```
+
+**参数**
+
+expression
+
+返回集合的任何有效的表达式。
+
+*NOT*
+
+指定对 EXISTS 的结果取反。
+
+**返回值**
+
+如果集合不为空，则为 true；否则为 false。
+
+**注释**
+
+EXISTS 是 实体 SQL 集运算符之一。 所有 实体 SQL 集运算符都是从左到右进行求值
+
+**示例**
+```sql
+select p from Products as p 
+where exists(select p from Products as p where p.UnitPrice > 0)
+```
+
+#### 3. IN
+
+确定某个值是否与某个集合中的任何值匹配。
+
+**语法**
+```
+value [ NOT ] IN expression
+```
+
+**参数**
+
+value：返回匹配值的任何有效表达式。
+
+[ NOT ]：指定对 IN 的 Boolean 结果取反。
+
+expression，返回集合以测试是否具有匹配的任何有效表达式。 所有表达式都必须与 value 一样属于同一类型或属于公共基类型或派生类型。
+
+**返回值**
+
+如果在集合中找到此值，则为 true；如果值为空或集合为空，则为空；否则为 false。 使用 NOT IN 可对 IN 的结果取反。
+
+**示例一**
+```sql
+select o from Orders as o where o.OrderId in { 1, 2 ,3 }
+```
+
+**示例二**
+```sql
+select o from Orders as o 
+where o.OrderId in ( select value d.OrderId from OrderDetails as d )
+```
+
+#### 4. INTERSECT
+
+返回 INTERSECT 操作数左右两边的两个查询表达式均返回的所有非重复值的集合。
+
+**语法**
+```
+expression INTERSECT expression
+```
+
+**参数**
+
+expression：返回一个集合以与从其他查询表达式返回的集合进行比较的任何有效查询表达式。
+
+**返回值**
+
+与 expression 具有相同类型或属于公共基类型或派生类型的一个集合。
+
+**示例**
+```cs
+var esql = @"(select p.ProductId, p.ProductName from Products as p where p.UnitPrice < 100 )
+                intersect
+                (select p.ProductId, p.ProductName from Products as p where p.UnitPrice > 200)";
+var q = db.CreateQuery<IDataRecord>(esql);
+```
+
+#### 5. UNION
+
+将两个或更多查询的结果组合成单个集合。
+
+**语法**
+
+```
+expression UNION expression
+```
+
+**参数**
+
+expression：返回一个集合以与该集合进行组合的任何有效查询表达式。所有表达式都必须与 expression 一样属于同一类型或属于公共基类型或派生类型。
+
+UNION：指定组合多个集合并将其作为单个集合返回。
+
+**返回值**
+
+与 expression 具有相同类型或属于公共基类型或派生类型的一个集合。
+
+**注释**
+
+UNION 是 实体 SQL 集运算符之一。 所有 实体 SQL 集运算符都是从左到右进行求值。
+
+**示例**
+```sql
+(select p.ProductID, p.ProductName from Products as p where p.UnitPrice < 100 )
+union
+(select p.ProductID, p.ProductName from Products as p where p.UnitPrice > 200)
+```
+
+#### 6. MULTISET
+
+根据值列表创建多集的实例。 MULTISET 构造函数中的所有值都必须具有兼容类型 T。 不允许使用空的多集构造函数。
+
+**语法**
+```
+MULTISET (expression [{, expression }] )
+or
+{ expression [{, expression }] }
+```
+
+**参数**
+
+expression：任何有效的值列表。
+
+**返回值**
+
+类型为 MULTISET<T> 的集合。
+
+**注释**
+
+多集构造函数根据值列表创建多集的实例。 该构造函数中的所有值都必须具有兼容类型。
+例如，下面的表达式创建整数的多集。
+```
+MULTISET(1, 2, 3)
+{1, 2, 3}
+```
+
+**示例一**
+```sql
+select o from Orders as o where o.OrderId in { 1, 2 ,3 }
+```
+
+**示例二**
+```sql
+select o from Orders as o where o.OrderId in MultiSet( 1, 2 ,3 )
+```
+
+#### 7. ROW
+
+从一个或多个值构造结构上类型化的匿名记录。
+
+**语法**
+
+```
+ROW (expression [ AS alias ] [,...] )
+```
+
+**参数**
+
+expression，任何有效的查询表达式，该表达式返回要在行类型中构造的值。
+alias，为在行类型中指定的值指定别名。 如果未提供别名，则 实体 SQL 会尝试基于 实体 SQL 别名生成规则来生成别名。
+
+**返回值**
+
+一个行类型。
+
+**注释**
+
+使用 ESQL 中的行构造函数可以从一个或多个值构造结构上类型化的匿名记录。 行构造函数的结果类型为行类型，其字段类型对应于用于构造该行的值的类型。 例如，下面的表达式构造一个类型为 DataRow(a int, b string, c int) 的值。
+ROW(1 AS a,  "abc" AS b,  a+34 AS c)	
+
+如果没有为行构造函数中的表达式提供别名，则系统会尝试生成一个别名。
+
+以下规则适用于在行构造函数中指定表达式别名：
+
+1、行构造函数中的表达式不能引用同一构造函数中的其他别名。
+
+2、同一行构造函数中的两个表达式不能具有相同别名。
+
+**示例**
+```sql
+select row(p.CategoryId, p.UnitPrice) from Products as p
+```
+
+#### 8. TREAT
+将特定基类型的对象视为指定派生类型的对象。
+
+**语法**
+```
+TREAT (expression as type)
+```
+
+**参数**
+
+expression：任何返回实体的有效查询表达式。
+type：一个实体类型。
+
+**返回值**
+
+一个具有指定数据类型的值。
+
+**注释**
+
+TREAT 用于在相关类之间执行向上转换。 例如，如果 Employee 派生自 Person 且 p 的类型为 Person，则 TREAT(p AS Employee) 会将泛型 Person 实例向上转换为 Employee；即，使您可以将 p 视为 Employee。
+
+TREAT 用于可以执行类似于以下查询的继承方案：
+
+``` sql
+SELECT TREAT(p AS Employee)
+FROM ContainerName.Person AS p
+WHERE p IS OF (Employee)
+```
+
+此查询将 Person 实体向上转换为 Employee 类型。如果 p 的值的实际类型不是 Employee，则表达式会生成值 null。
 
 
+### 七. 类型运算符
+运算符        |说明
+-------------|--------------------
+CAST         |将一种数据类型的表达式转换为另一种数据类型的表达式。
+IS [NOT] OF  |确定表达式的类型是否为指定类型或指定类型的某个子类型。
+OFTYPE       |从查询表达式返回特定类型的对象集合。
+命名类型构造函数|用于创建实体类型或复杂类型的实例。
+MULTISET     |根据值列表创建多集的实例。
+ROW          |从一个或多个值构造结构上类型化的匿名记录。
+TREAT        |将特定基类型的对象视为指定派生类型的对象。
+
+#### 1. CAST
+
+将一种数据类型的表达式转换为另一种数据类型的表达式。
+
+**语法**
+```
+CAST ( expression AS data_type)
+```
+
+**参数**
+
+expression：任何可转换为 data_type 的有效表达式。
+
+data_type：系统提供的目标数据类型，类型为公共语言运行库 (CLR) 类型。
+
+**返回值**
+
+返回与 data_type 相同的值。
+
+**注释**
+
+强制转换表达式的语义与 Transact-SQL CONVERT 表达式类似。 强制转换表达式用于将一种类型的值转换为另一种类型的值。
+```
+CAST( e as T )
+```
+
+如果 e 具有某种类型 S，且 S 可转换为 T，则上面的表达式是有效的强制转换表达式。T 必须为基元（标量）类型。使用强制转换表达式视为显式转换。显式转换可能截断数据或丧失精度。
+
+**示例**
+```sql
+select value cast(c.CategoryId as string) from Categories as c
+```
+```sql
+select value cast(c.CategoryId as short) from Categories as c
+```
+```sql
+select value cast(c.CategoryId as long) from Categories as c
+```
+
+#### 2. IS [NOT] OF
+
+确定表达式的类型是否为指定类型或指定类型的某个子类型。
+
+**语法**
+```
+expression IS [ NOT ] OF ( [ONLY] type)
+```
+
+**参数**
+
+expression：要确定其类型的任何有效查询表达式。
+
+NOT：对 IS OF 的 EDM.Boolean 结果取反。
+
+ONLY：指定仅当 expression 的类型为 type，而不是其任何子类型时，IS OF 才返回 true。
+
+type：要针对其测试 expression 的类型。
+
+**返回值**
+
+如果 expression 的类型为 T 且 T 为基类型或 type 的派生类型，则返回 true；如果 expression 在运行时为 null，则返回 null；否则返回 false。
+
+**注释**
+
+表达式 expression IS NOT OF (type) 和 expression IS NOT OF (ONLY type) 在语法上分别等效于 NOT (expression IS OF (type)) 和NOT (expression IS OF (ONLY type))。
+
+**示例一**
+```cs
+var esql = "select c from Contacts as c where c is of EmployeeContact";
+var q = db.CreateQuery<EmployeeContact>(esql);
+```
+
+**示例二**
+```cs
+var esql = "select c from Contacts as c where c is not of EmployeeContact";
+var q = db.CreateQuery<EmployeeContact>(esql);
+```
+
+**示例三**
+```cs
+var esql = "select c from Contacts as c where c is of only EmployeeContact";
+var q = db.CreateQuery<EmployeeContact>(esql);
+```
+
+#### 3. OFTYPE
+
+从查询表达式返回特定类型的对象集合。
+
+**语法**
+```
+OFTYPE (expression, [ONLY] test_type)
+```
+
+**参数**
+
+expression：返回对象集合的任何有效的查询表达式。
+
+test_type：要对 expression 返回的每个对象进行测试的类型。该类型必须由命名空间进行限定。
+
+**返回值**
+
+test_type类型或 test_type 的基类型或派生类型的对象集合。如果指定 ONLY，则仅返回 test_type 的实例或空集合。
+
+**示例一**
+```cs
+var esql = "select c from oftype(Contacts, FullContact) as c";
+var q = db.CreateQuery<EmployeeContact>(esql);
+```
+
+**示例二**
+```cs
+string esql = "select c from oftype(Contacts, only FullContact) as c";
+var q = db.CreateQuery<EmployeeContact>(esql);
+```
+
+#### 4. 命名类型构造函数
+
+**语法**
+```
+[{identifier. }] identifier( [expression [{, expression }][{, expression as identifier}]] )
+```
+
+**参数**
+
+identifier：作为简单标识符或带引号的标识符的值。
+
+expression：类型构造函数的参数或类型的属性。
+
+构造函数参数
+
+在 ALinq Dynamic 的 esql 语句中，为特定的类型创建实例，是不需要 new 關鍵字的。
+
+例句：在下面的例中，创建一个 System.DateTime 的實例。
+```cs
+var esql = "System.DateTime(2012,11,5)";
+var result = db.CreateQuery<DateTime>(esql).Single();
+```
+
+**1） 初始化属性值**
+
+在创建实例的时候，同时还可以为实例的属性赋值
+
+例句：下面的例子，创建一个 NorthwindDemo.Person 的实例，同时还将FisrtName属性赋值为 mike ，LastName属性赋值为 mak ，值得注意的时，赋值语的值在前，接着是 AS 关键字，最后是属性名。
+
+```cs
+var employeeId = 12345678;
+var esql = "NorthwindDemo.Person(123, 'mike' as FirstName, 'mak' as LastName)";
+var person = db.CreateQuery<NorthwindDemo.Person>(esql, employeeId).Single();
+```
+
+其等于下面的语句
+```cs
+var person = new Person(123);
+person.FirstName = "mike";
+person.LastName = "mak";
+```
+**2） 使用预定义的类**
+
+在 ALinq Dynamic 的 esql 中，预定义了一些常用的类型（具体请看下表），对于预定义的类型，可以直接用 ALinq Dynamic 中的名称。
+
+例如：
+```cs
+var esql = "System.DateTime(2012,11,5)"
+```
+
+等效于：
+```cs
+var esql = "DateTime(2012,11,5)"
+```
+
+esql 中的名称             |.Net 框架中的类
+-------------------------|-------------------
+DateTime                 |System.DateTime
+TimeSpan                 |System.TimeSpan
+Guid                     |System.Guid
+Math                     |System.Math
+Converter                |System.Converter
+object                   |System.Object
+bool                     |System.Boolean
+char                     |System.Char
+string                   |System.String
+sbyte                    |System.SByte
+byte                     |System.Byte
+short                    |System.Int16
+ushort                   |System.UInt16
+float                    |System.Single
+double                   |System.Double
+decimal                  |System.Decimal
+DateTime                 |System.DateTime
+TimeSpan                 |System.TimeSpan
+Guid                     |System.Guid
+Math                     |System.Math
+Convert                  |System.Convert
+Binary                   |System.Byte[]
+X                        |System.Byte[]
+
+#### 5. MULTISET
+
+根据值列表创建多集的实例。
+
+**语法**
+```
+MULTISET (expression [{, expression }] )
+or
+{ expression [{, expression }] }
+```
+
+**参数**
+
+expression：任何有效的值列表。
+
+**返回值**
+
+类型为 T[]（数组） 的集合。
+
+**示例**
+```sql
+select value m from MULTISET(1, 2, 3) as m
+```
+```sql
+select value m from {1, 2, 3} as m
+```
+```sql
+select o from Orders as o where o.OrderId in { 1, 2 ,3 }
+```
+
+#### 6. ROW
+
+从一个或多个值构造结构上类型化的匿名记录。
+
+**语法**
+```
+ROW (expression [ AS alias ] [,...] )
+```
+
+**参数**
+
+expression：任何有效的查询表达式，该表达式返回要在行类型中构造的值。
+
+alias：为在行类型中指定的值指定别名。
+
+**返回值**
+
+一个行类型。
+
+**示例一**
+```cs
+var esql = @"Row('mike' as FirstName, 'mak' as LastName, 
+        Row('ansiboy@163.com' as Email, 
+            '13434126607' as Phone) as Contact)";
+
+var row = db.CreateQuery<IDataRecord>(esql).Single();
+Console.WriteLine("{0} {1}", row["FirstName"], row["LastName"]);
+Console.WriteLine("{0} {1}", ((IDataRecord)row["Contact"])["Email"], ((IDataRecord)row["Contact"])["Phone"]);
+```
+
+**示例二**
+```cs
+select row(p.CategoryId, p.UnitPrice) from Products as p 
+group by p.CategoryId, p.UnitPrice
+having max(p.UnitPrice) > 1000
+```
+
+#### 7. TREAT
+
+将特定基类型的对象视为指定派生类型的对象。
+
+**语法**
+```
+TREAT (expression as type)
+```
+
+**参数**
+
+expression：任何返回实体的有效查询表达式。
+
+**注意**：指定表达式的类型必须为指定数据类型的子类型，或者该数据类型必须为表达式的类型的子类型。
+
+type：一个实体类型。
+
+**注意**：指定表达式必须为指定数据类型的子类型，或者该数据类型必须为该表达式的子类型。
+
+**返回值**
+
+一个具有指定数据类型的值。
+
+**示例**
+```cs
+var esql = @"select treat(c as FullContact) from Contacts as c where c is of FullContact";
+var q = db.CreateQuery<FullContact>(esql);
+```
+
+### 八. 其他运算符
+
+运算符              |说明
+-------------------|-----------------------
++（字符串串连）      |连接两个字符串
+.（成员访问）        |
+--（注释）          |
+
+#### 1. +（字符串串联）
+
+连接两个字符串。
+
+**语法**
+```
+expression + expression
+```
+
+**参数**
+
+expression：字符串类型的任何有效表达式。 或者能够隐式转换为字符串类型的表达式。
+
+**示例**
+```sql
+select value e.FirstName + ' ' + e.LastName as Name from Employees as e
+```
+
+#### 2. 成员访问
+
+点运算符 (.) 是 实体 SQL 成员访问运算符。 使用成员访问运算符可生成结构化概念模型类型实例的属性或字段的值。
+
+**语法**
+```
+expression.identifier[([arg1,[arg2]])]
+```
+
+**参数**
+
+expression：类的实例。
+
+identifier：对象实例的属性或字段。
+
+**注释**
+
+点 (.) 运算符可以用于从记录中提取字段，类似于提取复杂类型或实体类型的属性。 
+
+**示例一**
+
+Employee 是 Order 实体类的一个成员， o.Employee.FirstName 将 Employee 实体类的 FisrtName 成员提取出来。
+```
+select o.Employee.FirstName from Orders as o
+```
+
+**示例二**
+
+下面的语句，在选择ProductName属性的同时，调用Trime方法去掉ProductName的前后空格。
+```sql
+select value p.ProductName.Trim() from Products as p
+```
+
+#### 3. --（注释）
+
+实体 SQL 查询可以包含注释。 注释行以两个短划线 (--) 开头。
+
+**语法**
+```
+-- text_of_comment
+```
+
+**参数**
+
+text_of_comment：包含注释文本的字符串。
+
+**示例**
+```
+select p from Products as p  -- add a comment here
+```
+
+### 九. 扩展查询方法
+
+方法名称             |Entity SQL语句            |说明
+--------------------|-------------------------|-------------------------
+GroupBy             |Group By                 |按指定的条件对查询结果进行分组。
+OrderBy             |OrderBy                  |按指定条件对查询结果进行排序。
+Select              |Select                   |将查询结果限制为仅包含在指定投影中定义的属性。
+Skip                |Skip                     |按指定条件对查询结果进行排序并跳过指定数目的结果。
+Take                |Take                     |将查询结果限制为指定的项数。
+Where               |Where                    |将查询限制为包含与指定筛选条件匹配的结果。
+
+### 1. GroupBy
+
+按指定的条件对查询结果进行分组。
+
+**语法**
+```cs
+public IQueryable<IDataRecord> GroupBy(
+    string keys,
+    string projection,
+    params object[] parameters
+)
+```
+
+**参数**
+
+keys：作为结果分组依据的键列。
+
+projection：用于定义投影的所选属性的列表。
+
+parameters：此方法中使用的零个或多个参数。
+
+**返回值**
+
+一个新的 IQueryable<IDataRecord> 实例，等效于应用了 Group By 的原始实例。
+
+**示例**
+```cs
+var q = db.Products.GroupBy("CategoryId", "CategoryId, count()").Execute();
+foreach (var item in q)
+{
+    Console.WriteLine("{0} {1}", item[0], item[1]);
+}
+```
+
+#### 2. OrdeyBy
+
+按指定条件对查询结果进行排序。
+
+**语法**
+```cs
+public ObjectQuery<T> OrderBy(
+    string keys,
+    params object[] parameters
+)
+```
+
+**参数**
+
+keys：作为结果排序依据的键列。
+
+parameters：此方法中使用的零个或多个参数。
+
+**返回值**
+
+一个新的 IQueryable<T> 实例，等效于应用了 ORDER BY 的原始实例。
+
+**示例**
+```cs
+db.GetTable<Product>().OrderBy("it.ProductName")
+db.GetTable<Product>().OrderBy("it.ProductName desc")
+db.GetTable<Product>().OrderBy("it.ProductName asc")
+```
+
+#### 3. Select
+
+将查询结果限制为仅包含在指定投影中定义的属性。
+
+**语法**
+
+```cs
+public IQueryable<IDataRecord> Select(
+    string projection,
+    params object[] parameters
+)
+```
+
+**参数**
+
+projection：用于定义投影的所选属性的列表。
+
+parameters：此方法中使用的零个或多个参数。
+
+**返回值**
+
+类型：System.Linq.IQueryable<IDataRecord>，一个 IDataRecord 类型的新 IQueryable<T> 实例，等效于应用了 SELECT 的原始实例。
+
+**示例**
+```cs
+var q = db.GetTable<Product>().Select("it.ProductName, it.UnitsInStock, it.UnitsOnOrder");
+foreach (var item in q)
+{
+    Console.WriteLine("{0} {1} {2}", item[1], item[2], item[3]);
+}
+```
+
+#### 4. Skip
+
+按指定条件对查询结果进行排序并跳过指定数目的结果。
+
+**语法**
+```cs
+public IQueryable<T> Skip(
+    string keys,
+    string count,
+    params object[] parameters
+)
+```
+
+**参数**
+
+keys：作为结果排序依据的键列。
+
+count：要跳过的结果数。它可以是常量或参数引用。
+
+parameters：在分析时应在作用域内的一组可选查询参数。
+
+**返回值**
+
+一个新 IQueryable<T> 实例，等效于同时应用了 SKIP 的原始实例。
+
+**示例**
+```cs
+db.GetTable<Product>().Skip("10");
+db.GetTable<Product>().Skip("@0, 10);
+db.GetTable<Product>().Skip("@skip", new ObjectParameter("skip", 10));
+```
+
+#### 5. Take
+
+将查询结果限制为指定的项数。
+
+**语法**
+```cs
+public IQueryable<T> Take(
+    string count,
+    params object[] parameters
+)
+```
+
+**参数**
+
+count：字符串形式的结果项数。
+
+parameters：在分析时应在作用域内的一组可选查询参数。
+
+**返回值**
+
+一个新的 IQueryable<T> 实例，等效于应用了 TAKE 或 LIMIT 的原始实例。
+
+**示例**
+```cs
+db.GetTable<Product>().Take("10")
+db.GetTable<Product>().Take("@0", 10)
+db.GetTable<Product>().Take("@take", new ObjectParameter("take", 10))
+```
+
+#### 6. Where
+
+将查询限制为包含与指定筛选条件匹配的结果。
+
+**语法**
+```cs
+public IQueryable<T> Where(
+    string predicate,
+    params Object[] parameters
+)
+```
+
+**参数**
+
+predicate：筛选谓词。
+
+parameters：此方法中使用的零个或多个参数。
+
+**返回**
+
+一个新的 IQueryable<T> 实例，等效于应用了 WHERE 的原始实例。
+
+**示例一**
+```cs
+db.Customers.Where("it.Region == 'WA'")
+```
+
+**示例二**
+```cs
+var customerId_Set = new[] { "AROUT", "BOLId", "FISSA" };
+db.Orders.Where("it.CustomerId in @0", new[] { customerId_Set });
+```
 
 

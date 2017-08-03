@@ -191,14 +191,14 @@ namespace ALinq
                 throw Error.ProviderTypeNull();
 
 
-            try
-            {
-                LicenseManager.Validate(providerType, this);
-            }
-            catch (Exception exc)
-            {
-                throw exc;
-            }
+            //try
+            //{
+            //    LicenseManager.Validate(providerType, this);
+            //}
+            //catch (Exception exc)
+            //{
+            //    throw exc;
+            //}
 
 
             services = new CommonDataServices(this, model);

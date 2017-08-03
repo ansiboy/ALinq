@@ -157,7 +157,6 @@
     <Compile Include="SqlMethods.cs" />
     <Compile Include="SqlTest.cs" />
     <Compile Include="SRTest.cs" />
-    <Compile Include="Temp.cs" />
     <Compile Include="Test.cs" />
     <Compile Include="DataService.cs" />
     <Compile Include="XmlMappingSourceTest.cs" />

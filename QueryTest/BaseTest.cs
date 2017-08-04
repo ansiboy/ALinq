@@ -28,11 +28,23 @@ namespace ALinq.Dynamic.Test
 #if L2S
         protected NorthwindDemo.NorthwindDataContext db = new NorthwindDemo.NorthwindDataContext(ConfigurationManager.ConnectionStrings["sqlceDB"].ConnectionString);
 #else
-        protected NorthwindDataContext db = new NorthwindDataContext(ConfigurationManager.ConnectionStrings["sqliteDB"].ConnectionString);
+        protected NorthwindDataContext db = new NorthwindDataContext(SQLiteDbConnectionString);
 #endif
         protected Table<Employee> employees;
         protected Table<Product> products;
 
+        static string SQLiteDbConnectionString
+        {
+            get
+            {
+
+                var dllPath = typeof(BaseTest).Assembly.Location;
+                var fileInfo = new System.IO.FileInfo(dllPath);
+                var dbPath = System.IO.Path.Combine(fileInfo.Directory.FullName, "Northwind.db3");
+                var conn = string.Format("data source={0}", dbPath); //@"data source=c:\Northwind.db3";
+                return conn;
+            }
+        }
 #if FULL_TEST
         protected NorthwindEntities ef = new NorthwindEntities();
         internal void AssertException(Expression<Func<string>> msgExpr, EntitySqlException exc)

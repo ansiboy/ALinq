@@ -1,9 +1,4 @@
 bin
 obj
+.vs
 TestResults
-/.vs
-
-/Test/bin
-/Test/obj
-/ALinq.PostgreSQL/obj
-/ALinq.PostgreSQL/obj

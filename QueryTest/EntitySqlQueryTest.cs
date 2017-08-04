@@ -2496,32 +2496,6 @@ Console.WriteLine("{0} {1}", ((IDataRecord)row["Contact"])["Email"], ((IDataReco
             q.Execute();
 #endif
         }
-
-        [TestMethod]
-        public void Temp()
-        {
-            //db.OrderDetails.Where(
-            //    o => db.OrderDetails.Where(od => od.ProductId == 123).Select(od => od.OrderId).Contains(o.OrderId));
-
-            //var q1 = (db.Categories.Where(c => c.Products.Count() > 0).Select(c => c.CategoryId));
-            //var q = db.Products.Where(p => q1.Contains(p.CategoryId.Value));
-            //q.Execute();
-
-            //var c2 = db.Categorie.Single(o => o.CategoryId == 1);
-            //db.Refresh(RefreshMode.OverwriteCurrentValues, c2);
-            //Console.WriteLine(c1 == c2);
-
-            Console.WriteLine(db.Categories.First().CategoryId);
-
-var c1 = db.Categories.Single(o => o.CategoryId == 1);
-c1.CategoryName = "xxx";
-db.SubmitChanges();
-
-c1.CategoryName = "xxx";
-db.SubmitChanges();
-        }
-
-
     }
 
     public class Person2

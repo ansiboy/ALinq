@@ -1,7 +1,5 @@
 # ALinq 动态查询
 
-
-
 ## I.前言
 
 ALinq Dynamic 为 ALinq 提供了一个 Entiy SQL 的查询接口，使得它们能够应用 Entity SQL 进行数据的查询。它的原理是将 Entiy SQL 解释为 Linq 表达式，再执行生成的 Linq 表达式。
@@ -506,7 +504,7 @@ var esql = @"(select p.ProductID, p.ProductName from Products as p where p.UnitP
 var q = db.CreateQuery<IDataRecord>(esql);
 ```
 
-* 使用索引器查询 
+**使用索引器查询** 
 
 下面的示例，选取员工的FirstName和LastName，并且过滤掉FirstName为Mike的记录。
 
@@ -516,7 +514,7 @@ var q = db.CreateQuery<IDataRecord>(esql)
             .Where(o=> (string)o["FirstName"] != "Mike");
 ```
 
-* 使用接口查询
+**使用接口查询**
 
 下面的示例是基于接口的查询示例，值得注意的是，Employee实体类必须继承IEmployee接口，否则会出异常。
 
@@ -527,7 +525,7 @@ var q = db.CreateQuery<IEmployee>(esql)
             .Select(o => new { o.FirstName, o.LastName, o.BirthDate });
 ```
 
-* 参数化数据源
+**参数化数据源**
 
 使用参数化的数据源，可以将Linq查询与Entity SQL查询结合起来。下面的示例中，选通过Linq查询获取Country为EN的员工记录，然后在Entity SQL语句中，再过滤掉LastName为Mak的记录。
 

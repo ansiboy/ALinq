@@ -38,7 +38,6 @@ D:\Projects\ALinq\Test\bin\Debug\ALinq.PostgreSQL.dll
 D:\Projects\ALinq\Test\bin\Debug\ALinq.SQLite.dll
 D:\Projects\ALinq\Test\bin\Debug\FirebirdSql.Data.FirebirdClient.dll
 D:\Projects\ALinq\Test\bin\Debug\IBM.Data.DB2.dll
-D:\Projects\ALinq\Test\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
 D:\Projects\ALinq\Test\bin\Debug\Mono.Security.dll
 D:\Projects\ALinq\Test\bin\Debug\MySql.Data.dll
 D:\Projects\ALinq\Test\bin\Debug\NorthwindDatabase.dll

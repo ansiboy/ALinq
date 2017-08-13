@@ -1,12 +1,4 @@
-/**/bin
-/**/obj
-/ALinq/bin
-/ALinq/obj
-/ALinq.Access/bin
-/ALinq.Access/obj
-/ALinq.EffiProz/obj
-/ALinq.Firebird/obj
-/ALinq.MySQL/obj
-/.vs
-/ALinq.OdpOracle/obj
-/ALinq.Orcale/obj
+bin
+obj
+.vs
+TestResults

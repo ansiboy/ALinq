@@ -425,7 +425,7 @@ namespace Test
             count = (from customer in db.Customers
                      where customer.CustomerID == "XXXX"
                      select customer).Count();
-            Assert.IsTrue(count == 0);
+            Assert.AreEqual(0, count);
         }
 
         [TestMethod]
@@ -2383,30 +2383,30 @@ namespace Test
 
         }
 
-        [TestMethod]
-        public void Test1()
-        {
-            // using System.Data.Common;
-            var db = new AccessNorthwind(@"c:\northwind.mdb");
+        //[TestMethod]
+        //public void Test1()
+        //{
+        //    // using System.Data.Common;
+        //    var db = new AccessNorthwind(@"c:\northwind.mdb");
 
-            var q =
-                from cust in db.Customers
-                where cust.City == "London"
-                select cust;
+        //    var q =
+        //        from cust in db.Customers
+        //        where cust.City == "London"
+        //        select cust;
 
-            Console.WriteLine("Customers from London:");
-            foreach (var z in q)
-            {
-                Console.WriteLine("\t {0}", z.ContactName);
-            }
+        //    Console.WriteLine("Customers from London:");
+        //    foreach (var z in q)
+        //    {
+        //        Console.WriteLine("\t {0}", z.ContactName);
+        //    }
 
-            DbCommand dc = db.GetCommand(q);
-            Console.WriteLine("\nCommand Text: \n{0}", dc.CommandText);
-            Console.WriteLine("\nCommand Type: {0}", dc.CommandType);
-            Console.WriteLine("\nConnection: {0}", dc.Connection);
+        //    DbCommand dc = db.GetCommand(q);
+        //    Console.WriteLine("\nCommand Text: \n{0}", dc.CommandText);
+        //    Console.WriteLine("\nCommand Type: {0}", dc.CommandType);
+        //    Console.WriteLine("\nConnection: {0}", dc.Connection);
 
-            Console.ReadLine();
-        }
+        //    Console.ReadLine();
+        //}
 
         [ALinq.Mapping.Table(Name = "Products")]
         public class MyProduct
@@ -2422,31 +2422,6 @@ namespace Test
 
             [ALinq.Mapping.Column]
             public string QuantityPerUnit;
-
-
-
-        }
-
-        [TestMethod]
-        public void Test2()
-        {
-            var db = new AccessNorthwind("C:/Northwind.mdb");
-            db.Log = Console.Out;
-            //IQueryable<Customer> custQuery =
-            //    from cust in db.Customers
-            //    where cust.City == "London"
-            //    select cust;
-
-            //foreach (Customer custObj in custQuery)
-            //{
-            //    Console.WriteLine(custObj.CustomerID);
-            //}
-
-            var d = db.Employees.Where(o => o.EmployeeID == 1).Select(o => o.BirthDate).Min();
-
-            Assert.AreEqual(DateTime.MinValue, d);
-            Console.WriteLine(DateTime.Now.ToShortDateString());
-            Console.Out.Flush();
         }
     }
 }

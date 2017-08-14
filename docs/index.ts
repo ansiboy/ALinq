@@ -49,8 +49,8 @@ requirejs(['showdown'], function (markdown) {
             for (let i = 0; i < codes.length; i++) {
                 var str = codes.item(i).innerText;//
                 //debugger;
-                    //  var reg = new RegExp(/&lt;/);
-                       
+                //  var reg = new RegExp(/&lt;/);
+
                 str = str.replace(/&lt;/g, '<');
                 str = str.replace(/&amp;lt;/g, '<');
                 str = str.replace(/&gt;/g, '>');
@@ -62,6 +62,6 @@ requirejs(['showdown'], function (markdown) {
             hljs.initHighlighting();
         });
     }
-
-
 });
+
+

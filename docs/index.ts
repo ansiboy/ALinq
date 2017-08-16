@@ -45,17 +45,15 @@ requirejs(['showdown'], function (markdown) {
                 tables.item(i).className = 'table table-bordered';
             }
 
+            /* fix cs 泛类型代码转换后 < 变 &lt; > 变 &gt; 的 BUG */
             var codes = contentElement.querySelectorAll('code');
             for (let i = 0; i < codes.length; i++) {
                 var str = codes.item(i).innerText;//
-                //debugger;
-                //  var reg = new RegExp(/&lt;/);
 
                 str = str.replace(/&lt;/g, '<');
                 str = str.replace(/&amp;lt;/g, '<');
                 str = str.replace(/&gt;/g, '>');
                 str = str.replace(/&amp;gt;/g, '>');
-                //     //codes.item(i).innerHTML = html;
                 codes.item(i).innerText = str;
             }
 

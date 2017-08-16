@@ -23,7 +23,7 @@ ALinq 是一个和支持 Linq 查询操作的 ORM，并且兼容 Linq to SQL。�
 * [重用 ADO.NET 命令何 DataContext 之间的连接](?ALinq/ReuseConnection)
 
 ### 查询数据库
-* 查询信息
+<!-- * 查询信息 -->
 * [将信息作为只读信息](?ALinq/QueryDataAsReadonly)
 * [关闭延长加载](?ALinq/CloseDeferredLoading)
 * [直接执行 SQL 查询](?ALinq/ExecuteSQLQuery)
@@ -31,10 +31,28 @@ ALinq 是一个和支持 Linq 查询操作的 ORM，并且兼容 Linq to SQL。�
 * [一次检索多个对象](?ALinq/QueryMultyObjectsInOnce)
 * [在 DataContext 级别进行刷选](?ALinq/FilterInDataContext)
 
+### 生成和提交数据更改
+
+* [数据更改]
+
+* 管理更改冲突
+    * [检测冲突](?ALinq/ManageConflicts/CheckConflicts)
+    * [检索冲突信息](?ALinq/ManageConflicts/RetrieveConflictInfo)
+    * [解决冲突](?ALinq/ManageConflicts/FixConflicts)
+
+
 ### 数据库与对象的映射
 * [基于属性的映射](?ALinq/AttributeMapping)
 * [外部映射](?ALinq/XMLMapping)
 * [Fluent 映射](?ALinq/FluentMapping)
+
+### 背景信息
+
+* 对象标识
+* 对象状态与更改跟踪
+* 从标识缓存中检索对象
+* 用户自定义函数
+
 
 <!-- ### 生成和提交数据更改
 * 如何: 向数据库插入行

@@ -1,6 +1,14 @@
 ## 快速上手
 
-本示例代码可以**点击这里**下载。
+本示例代码可以[**点击这里**](https://github.com/ansiboy/alinq-quick-start)下载。
+
+或者使用 git 命令下载
+
+```
+git clone https://github.com/ansiboy/alinq-quick-start
+```
+
+该项目已经为你建好了示例里的实体类，以及数据库，为了方便使用的是 SQLite 数据库。
 
 注意：本演练使用的开发平台是 64位，数据库是 SQLite 。如果你的开发平台是 32位，需要引用 32位版本的 System.Data.SQLite.dll 。
 

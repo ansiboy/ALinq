@@ -27,6 +27,9 @@ requirejs(['showdown'], function (markdown) {
     var converter = new markdown.Converter();
     converter.setOption('tables', true);
     var filePath = (location.search || '').substring(1);
+    if (!filePath) {
+        location.href = 'https://github.com/ansiboy/ALinq';
+    }
     if (filePath) {
         requirejs(['highlight', "text!" + filePath + ".md", 'css!highlightStyle', 'css!style'], function (hljs, md) {
             var html = converter.makeHtml(md);

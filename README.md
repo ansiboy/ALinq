@@ -169,4 +169,12 @@ foreach (var customer in companyNameQuery)
 
 更详细的使用，请参考 Linq to SQL
 
+## ALinq Dynamic
+
+ALinq Dynamic 为 ALinq 提供了一个 Entiy SQL 的查询接口，使得它们能够应用 Entity SQL 进行数据的查询。它的原理是将 Entiy SQL 解释为 Linq 表达式，再执行生成的 Linq 表达式。
+
+使用文档
+
+https://github.com/ansiboy/ALinq/blob/gh-pages/ALinqDynamic.md
+
 

@@ -29,7 +29,9 @@ ALinq 非常易于使用，如果你熟悉 Linq to SQL，几分钟即可上手�
 
 其他的使用和 Linq to SQL 相同。
 
-### 示例
+### 使用步骤
+
+####  创建 DataContext
 
 * 使用 ALinq 连接 Access 数据库
 
@@ -94,6 +96,76 @@ ALinq 非常易于使用，如果你熟悉 Linq to SQL，几分钟即可上手�
     var context = new ALinq.DataContext(conn,
                                 typeof(ALinq.MySQL.MySqlProvider));
     ```
+
+#### 创建与数据库的映射
+
+* Attribute 映射
+
+    ```cs
+    [ALinq.Mapping.Table(Name=&quot;Customers&quot;)]
+    public class Customer
+    {
+        [ALinq.Mapping.Column]
+        public string CustomerID;
+                
+        [ALinq.Mapping.Column]
+        public string CompanyName;
+                
+        [ALinq.Mapping.Column]
+        public string ContactName;
+                
+        [ALinq.Mapping.Column]
+        public string City;
+    }
+    ```
+
+* XML 映射
+
+    ```xml
+    <?xml version="1.0" encoding="utf-8"?>
+    <Database Name="NorthwindDatabase" Provider="ALinq.Access.AccessDbProvider" 
+            xmlns="http://schemas.microsoft.com/linqtosql/mapping/2007">
+        <Table Name="Customers" Member="Customers">
+            <Type Name="ALinqDocument.Customer">
+                <Column Member="CustomerID"/>
+                <Column Member="CompanyName"/>
+                <Column Member="ContactName"/>
+                <Column Member="ContactTitle"/>
+                <Column Member="Address"/>
+                <Column Member="City"/>
+                <Column Member="Region"/>
+                <Column Member="PostalCode"/>
+                <Column Member="Country"/>
+                <Column Member="Phone"/>
+                <Column Member="Fax"/>
+            </Type>
+        </Table>
+    </Database>
+    ```
+
+* 查询数据库
+
+```cs
+var db = new ALinq.DataContext(@"C:/Northwind.mdb");
+
+var companyNameQuery = from cust in db.GetTable<Customer>()
+                       where cust.City == "London"
+                       select cust.CompanyName;
+
+foreach (var customer in companyNameQuery)
+    Console.WriteLine(customer);
+
+//use XmlMappingSource
+var xmlMapping = ALinq.Mapping.XmlMappingSource.FromUrl("C:/Northwind.map");
+db = new ALinq.DataContext(@"C:/Northwind.mdb", xmlMapping);
+
+companyNameQuery = from cust in db.GetTable<Customer>()
+                   where cust.City == "London"
+                   select cust.CompanyName;
+
+foreach (var customer in companyNameQuery)
+    Console.WriteLine(customer);
+```
 
 更详细的使用，请参考 Linq to SQL
 
